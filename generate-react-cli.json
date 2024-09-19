@@ -1,0 +1,25 @@
+{
+  "usesTypeScript": true,
+  "usesStyledComponents": false,
+  "usesCssModule": false,
+  "cssPreprocessor": "css",
+  "testLibrary": "Testing Library",
+  "component": {
+    "default": {
+      "customTemplates": {
+        "component": "templates/component/TemplateName.tsx",
+        "types": "templates/component/types.ts",
+        "index": "templates/component/index.ts",
+        "style": "templates/component/styles.ts",
+        "test": "templates/component/TemplateName.test.tsx"
+      },
+      "path": "src/components/atoms",
+      "withTypes": true,
+      "withIndex": true,
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false
+    }
+  }
+}

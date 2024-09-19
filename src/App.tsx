@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 function App(): React.JSX.Element {
   return (
     <View style={styles.container}>
-      <Text>TodosScreen</Text>
+      <Text>TodosScreen 1</Text>
     </View>
   );
 }
