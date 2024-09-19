@@ -1,79 +1,63 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Tестовое задание Todo list
 
-# Getting Started
+## Содержание
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+- [Техническое задание](#Техническое-задание)
+- [Используемые технологии](#Используемые-технологии)
+- [Полезные ссылки](#Полезные-ссылки)
 
-## Step 1: Start the Metro Server
+## Техническое задание
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Необходимо реализовать React Native приложение “Modsen todo list” с использвоанием Firebase. Приложение должно предоставлять возможность создания и удаления задачи, а также просмотра списка всех задачи.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+#### Необходимый функционал:
 
-```bash
-# using npm
-npm start
+- Возможность создания задачи с использованием инпутов;
+- Удаление, добавление подзадач и редактирования задачи при нажатии на кнопку рядом с ней;
+- Просмотр задач;
+- Сохранение задач в базе данных.
 
-# OR using Yarn
-yarn start
-```
+#### Пример графического представления:
 
-## Step 2: Start your Application
+[Макет](https://www.figma.com/design/hAF4EiqaLeACrDbJnlaane/Untitled?node-id=0-1&t=ZKhJFeePAHOa1isP-0)
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### Описание дизайна
 
-### For Android
+1. [Стартовый экран](https://www.figma.com/design/hAF4EiqaLeACrDbJnlaane/Untitled?node-id=1-261&t=ZKhJFeePAHOa1isP-0). Данный экран содержит в себе базовую информацию об приложении и кнопку которая переводит пользователя на главный экран.
+2. [Главный экран](https://www.figma.com/design/hAF4EiqaLeACrDbJnlaane/Untitled?node-id=1-477&t=ZKhJFeePAHOa1isP-0). Данный экран содержит в себе напоминание сколько задач предстоит сделать пользователю. Также присутсвует строка поиска, в которой пользователь вводит название задачи и если она существует производит переход к списку задач у которых совпадает название. Так же на экране присутвует блок с категориями, который можно расширять, добавив свои категории (базово должны присутвовать категории которые описаны на дизайне). На данном экране пристувует Drawer меню, в котором можно перейти на экран со всеми задачами запланированнными на сегодня не зависимо от категории, список выполненых задач также не зависимо от категорий и задач помеченных как важные.
+3. [Экран со списком задач](https://www.figma.com/design/hAF4EiqaLeACrDbJnlaane/Untitled?node-id=1-573&t=ZKhJFeePAHOa1isP-0) Данный экран представляет собой список задач. Взаимодействие по изменению задач, добавлению подзадач и удалению вынесен в модальное окно доступ к которому можно получить нажав на иконку. При нажатии на задачу блок расширяется и показывает подзадачи которые прикреплены (данный функционал доступен для блока только если у него есть подзадачи). Чтобы пометить задачу как выполненую, пользователю необходимо изменить состояние чекбокса задачи, либо всех подзадач (если у задачи есть подзадачи, то после пометки ее как выполненой все подзадачи становятся автоматически выполнеными). Под списком задач присутсвует расширяемый блок который содержит все выполненые задачи. В этом списке задачи можно только удалить или пометить как не выполненые. При измении статуса задачи она перемещается между блоками. Для облегчения дизайна если пользователь решит открыть список выполненых задач список невыполненых должен скрываться. При нажатии на иконку + открывается модальное окно для создания задачи, которые делятся по шагам:
+   1. Заполнение базовой информации о задаче: название, описание. Все поля обязательные и должны быть провалидированы. Дизайн остается на усмотрение выполняющего, но не должен выбиваться из основного дизайна приложения.
+   2. Добавление подзадач. В этом блоке можно выбрать подзадачу которая была создана ранее для любой другой задачи или создать собственную при нажатии на +. Подзадача состоит только из ее название. Одновременно может быть открыто только 1 текстовое поле в которое можно ввести имя подзадачи. Текстовое поле для описание подзадачи можно оставить пустым, в таком случае подзадача не будет создана. В данном пункте можно задачи не выбирать. [Дизайн](https://www.figma.com/design/hAF4EiqaLeACrDbJnlaane/Untitled?node-id=1-647&t=ZKhJFeePAHOa1isP-0) После подтверждения добавления модальное окно должно закрываться и новая задача должна появится в списке сразу же. Функционал редактирования задачи идентичный добавлению и изменения должны применяться сразу же. Название в header должно соответсвовать выбранному фильтру.
 
-```bash
-# using npm
-npm run android
+#### Также проект предполагает:
 
-# OR using Yarn
-yarn android
-```
+- Обработку ошибок через паттерн _"Error Boundaries"_;
+- Использование алиасов для импортирования файлов;
+- Реализация должна быть выполнена без использования UI библиотек на подобии react-native-elements, исключением может являться использование компонент для отрисовки svg иконок;
+- обязательная валидация всех текстовых полей с использованием _yup_.
 
-### For iOS
+## Используемые технологии
 
-```bash
-# using npm
-npm run ios
+- **_Node.js_** - программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код);
+- **_Babel_** - транспайлер, преобразующий код из одного стандарта в другой;
+- **_Metro Bundler_** - сборщик для RN проектов;
+- **_yarn_** - менеджер пакетов;
+- **_react-native_** - JavaScript-фреймворк для создания нативных мобильных приложений;
+- **_react-navigation_** - библиотека реализующая навигацию приложения;
+- **_firebase_** - облачная база данных, которая позволяет пользователям хранить и получать сохраненную информацию;
+- **_yup_** - библиотека для валидации форм.
+  y
 
-# OR using Yarn
-yarn ios
-```
+## Полезные ссылки
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+[React](https://reactjs.org/docs/getting-started.html)
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+[React hooks](https://reactjs.org/docs/hooks-intro.html)
 
-## Step 3: Modifying your App
+[yup](https://github.com/jquense/yup)
 
-Now that you have successfully run the app, let's modify it.
+[react-navigation](https://reactnavigation.org/)
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+[react-native-firebase](https://www.npmjs.com/package/@react-native-firebase/app)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+[Commits convetional](https://www.conventionalcommits.org/en/v1.0.0/#specification)
