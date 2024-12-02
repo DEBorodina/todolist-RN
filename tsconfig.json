@@ -4,6 +4,8 @@
    "baseUrl": "src",
    "paths": {
      "@components/*": ["components/*"],
-   }
+     "@theme/*": ["theme/*"],
+   },
+   "types": ["node", "jest", "@testing-library/jest-dom"],
  }
 }

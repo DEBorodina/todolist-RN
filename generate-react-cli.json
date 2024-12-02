@@ -11,14 +11,15 @@
         "types": "templates/component/types.ts",
         "index": "templates/component/index.ts",
         "style": "templates/component/styles.ts",
-        "test": "templates/component/TemplateName.test.tsx"
+        "test": "templates/component/TemplateName.test.tsx",
+        "story": "templates/component/TemplateName.stories.tsx"
       },
       "path": "src/components/atoms",
       "withTypes": true,
       "withIndex": true,
       "withStyle": true,
       "withTest": true,
-      "withStory": false,
+      "withStory": true,
       "withLazy": false
     }
   }
