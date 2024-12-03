@@ -4,7 +4,14 @@ module.exports = {
   bracketSpacing: true,
   singleQuote: true,
   trailingComma: 'all',
-  importOrder: ['^@core/(.*)$', '^@server/(.*)$', '^@ui/(.*)$', '^[./]'],
+  plugins: ['@trivago/prettier-plugin-sort-imports'],
+  importOrder: [
+    '<THIRD_PARTY_MODULES>',
+    '^@?\\w',
+    '^[../../]',
+    '^[./]',
+    '^jest-fetch-mock',
+  ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 };

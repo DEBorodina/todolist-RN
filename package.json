@@ -10,8 +10,8 @@
     "test": "jest",
     "storybook-generate": "sb-rn-get-stories",
     "prestart": "yarn update-stories",
-    "prestorybook-metro": "yarn update-stories",
-    "storybook-metro": "react-native start --config ./.storybook/metro.storybook.js"
+    "prestorybook": "yarn update-stories",
+    "storybook": "react-native start --config ./.storybook/metro.storybook.js"
   },
   "dependencies": {
     "@react-native-community/cli": "^14.1.1",

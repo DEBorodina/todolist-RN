@@ -1,7 +1,7 @@
+import { fireEvent, render, screen } from '@test-utils';
 import React from 'react';
 import { Text } from 'react-native';
 
-import { fireEvent, render, screen } from '../../../../test-utils';
 import { Button } from './Button';
 
 describe('Button', () => {

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartScreen renders correctly 1`] = `
+<View
+  style={{}}
+>
+  <Image
+    source={
+      {
+        "testUri": "../../../assets/images/start-background.png",
+      }
+    }
+  />
+  <Text>
+    StartScreen 3
+  </Text>
+</View>
+`;
