@@ -1,3 +1,3 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({ container: {} });
+export const StyledTemplateName = styled.View``;

@@ -24,12 +24,12 @@
     },
     "screen": {
       "customTemplates": {
-        "component": "templates/screen/TemplateName.tsx",
-        "types": "templates/screen/types.ts",
-        "index": "templates/screen/index.ts",
-        "style": "templates/screen/styles.ts",
-        "test": "templates/screen/TemplateName.test.tsx",
-        "story": "templates/screen/TemplateName.stories.tsx"
+        "component": "templates/component/TemplateName.tsx",
+        "types": "templates/component/types.ts",
+        "index": "templates/component/index.ts",
+        "style": "templates/component/styles.ts",
+        "test": "templates/component/TemplateName.test.tsx",
+        "story": "templates/component/TemplateName.stories.tsx"
       },
       "path": "src/screens",
       "withTypes": true,
