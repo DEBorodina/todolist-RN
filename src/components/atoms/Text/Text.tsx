@@ -7,8 +7,10 @@ export const Text: FC<TextProps> = ({
   children,
   view = 'medium-m',
   color = 'primary',
+  textAlign = 'center',
+  styler,
 }) => (
-  <StyledText view={view} color={color}>
+  <StyledText view={view} color={color} styler={styler} textAlign={textAlign}>
     {children}
   </StyledText>
 );

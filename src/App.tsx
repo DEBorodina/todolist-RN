@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { GlobalThemeProvider } from 'theme/themeProvider';
+
+import { GlobalThemeProvider } from '@theme';
 
 import { StartScreen } from './screens/StartScreen';
 
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
 });
 

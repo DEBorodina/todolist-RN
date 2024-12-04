@@ -9,13 +9,15 @@ export const Button: FC<ButtonProps> = ({
   onPress,
   size = 'm',
   color = 'primary',
+  styler,
 }) => (
   <StyledButton
     onPress={onPress}
     activeOpacity={activeOpacity}
     color={color}
     size={size}
-    accessibilityLabel="button">
+    accessibilityLabel="button"
+    styler={styler}>
     {children}
   </StyledButton>
 );

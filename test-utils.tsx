@@ -1,7 +1,7 @@
 import { RenderOptions, render } from '@testing-library/react-native';
 import React, { ReactElement } from 'react';
 
-import { GlobalThemeProvider } from './src/theme';
+import { GlobalThemeProvider } from '@theme';
 
 const AllTheProviders = ({ children }: { children: JSX.Element }) => {
   return <GlobalThemeProvider>{children}</GlobalThemeProvider>;

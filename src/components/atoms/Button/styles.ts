@@ -4,6 +4,7 @@ import { sizes } from './constants';
 import { StyledButtonProps } from './types';
 
 export const StyledButton = styled.TouchableOpacity<StyledButtonProps>`
+  ${({ styler }) => styler}
   background-color: ${({ theme, color }) => theme.colors[color]};
   width: ${({ size }) => sizes[size].width}px;
   height: ${({ size }) => sizes[size].height}px;

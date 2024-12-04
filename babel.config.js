@@ -10,9 +10,11 @@ module.exports = {
           '@components': './src/components',
           '@theme': './src/theme',
           '@test-utils': './test-utils',
+          '@common-types': './src/common-types',
+          '@hooks': './src/hooks',
         },
       },
-      'react-native-reanimated/plugin',
     ],
+    'react-native-reanimated/plugin',
   ],
 };

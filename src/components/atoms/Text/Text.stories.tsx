@@ -7,6 +7,7 @@ import { FONT_SIZES, FONT_WEIGHTS, fontPresetsNames } from './constants';
 import { FontSizes, FontWeights } from './types';
 
 const colors = ['primary', 'secondary', 'primaryInverted'];
+const textAligns = ['left', 'center', 'right'];
 
 const meta: Meta<typeof Text> = {
   title: 'Text',
@@ -18,6 +19,10 @@ const meta: Meta<typeof Text> = {
     },
     view: {
       options: fontPresetsNames,
+      control: { type: 'radio' },
+    },
+    textAlign: {
+      options: textAligns,
       control: { type: 'radio' },
     },
   },
