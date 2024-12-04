@@ -3,6 +3,7 @@ import { AppRegistry } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 import { name as appName } from '../app.json';
+
 import { view } from './storybook.requires';
 
 const StorybookUIRoot = view.getStorybookUI({

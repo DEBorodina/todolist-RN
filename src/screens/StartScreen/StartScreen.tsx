@@ -6,7 +6,7 @@ import { Button } from '@components/atoms/Button';
 import { Text } from '@components/atoms/Text';
 
 import { WelcomeImage } from './components';
-import { BUTTON_TEXT, SUBTITLE, TITLE } from './config';
+import { ANIMATION_DURATION, BUTTON_TEXT, SUBTITLE, TITLE } from './config';
 import { Container, Layout } from './styles';
 import { StartScreenProps } from './types';
 
@@ -15,7 +15,7 @@ export const StartScreen: FC<StartScreenProps> = () => {
     <Layout>
       <WelcomeImage />
       <Container>
-        <Animated.View entering={SlideInLeft.duration(700)}>
+        <Animated.View entering={SlideInLeft.duration(ANIMATION_DURATION)}>
           <Text view="medium-xl" styler={{ marginBottom: 12 }}>
             {TITLE}
           </Text>

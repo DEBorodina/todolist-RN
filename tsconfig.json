@@ -7,7 +7,7 @@
       "@theme": ["src/theme"],
       "@test-utils": ["test-utils"],
       "@common-types": ["src/common-types"],
-      "@hooks":["src/hooks"],
+      "@hooks": ["src/hooks"]
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
   }
