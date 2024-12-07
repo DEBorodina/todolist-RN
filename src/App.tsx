@@ -1,27 +1,22 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Provider } from 'react-redux';
 
+import { StatusBar } from '@components/atoms/StatusBar';
+import { store } from '@store';
 import { GlobalThemeProvider } from '@theme';
 
-import { StartScreen } from './screens/StartScreen';
+import { Navigator } from './navigation/Navigator';
 
 function App(): React.JSX.Element {
   return (
-    <View style={styles.container}>
+    <Provider store={store}>
       <GlobalThemeProvider>
-        <StartScreen />
+        <StatusBar>
+          <Navigator />
+        </StatusBar>
       </GlobalThemeProvider>
-    </View>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-});
 
 export default App;

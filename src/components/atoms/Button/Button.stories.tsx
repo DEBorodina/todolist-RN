@@ -1,7 +1,8 @@
 import type { Meta } from '@storybook/react';
 import React from 'react';
-import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
+
+import { Text } from '../Text';
 
 import { Button } from './Button';
 
@@ -25,17 +26,13 @@ export default meta;
 
 export const Default = {
   args: {
-    children: <Text>'Hello world'</Text>,
+    children: <Text color="primaryInverted">Hello world</Text>,
   },
 };
 
 export const Circle = {
   args: {
-    children: (
-      <Text>
-        <Icon name="plus-a" size={19} color="#fff" />
-      </Text>
-    ),
+    children: <Icon name="plus-a" size={19} color="#fff" />,
     color: 'secondary',
     size: 'circle',
   },

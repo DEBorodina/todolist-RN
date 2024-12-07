@@ -11,4 +11,5 @@ export const Layout = styled.View`
   max-height: 550px;
   align-items: center;
   justify-content: space-between;
+  margin: auto;
 `;

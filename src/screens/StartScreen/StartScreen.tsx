@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
 import Animated from 'react-native-reanimated';
 import { SlideInLeft } from 'react-native-reanimated';
+import uuid from 'react-native-uuid';
 
 import { Button } from '@components/atoms/Button';
 import { Text } from '@components/atoms/Text';
+import { USER_ID_KEY } from '@constants';
+import { useActions } from '@store';
+import { setAsyncStorageItem } from '@utils';
 
 import { WelcomeImage } from './components';
 import { ANIMATION_DURATION, BUTTON_TEXT, SUBTITLE, TITLE } from './config';
@@ -11,6 +15,14 @@ import { Container, Layout } from './styles';
 import { StartScreenProps } from './types';
 
 export const StartScreen: FC<StartScreenProps> = () => {
+  const { setUserId } = useActions();
+
+  const handleStart = () => {
+    const userId = uuid.v4();
+    setAsyncStorageItem(userId, USER_ID_KEY);
+    setUserId(userId);
+  };
+
   return (
     <Layout>
       <WelcomeImage />
@@ -23,7 +35,7 @@ export const StartScreen: FC<StartScreenProps> = () => {
             {SUBTITLE}
           </Text>
         </Animated.View>
-        <Button onPress={() => {}} styler={{ marginTop: 32 }}>
+        <Button onPress={handleStart} styler={{ marginTop: 32 }}>
           <Text view="medium-m" color="primaryInverted">
             {BUTTON_TEXT}
           </Text>
