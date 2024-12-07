@@ -6,4 +6,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['./src/**/*.{ts,tsx}'],
   coveragePathIgnorePatterns: ['<rootDir>/.*.stories.?(ts|tsx|js|jsx)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(@react-native|react-native|react-native-reanimated|react-redux)/)',
+  ],
 };
