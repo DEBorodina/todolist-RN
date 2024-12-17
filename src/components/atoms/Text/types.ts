@@ -9,8 +9,9 @@ type TextAligns = 'left' | 'center' | 'right';
 
 export type FontPresetsNames = `${FontWeights}-${FontSizes}`;
 type FontSettings = {
-  fontSize: FontSizes;
-  fontFamily: FontColors;
+  fontSize: (typeof FONT_SIZES)[FontSizes]['fontSize'];
+  fontFamily: (typeof FONT_WEIGHTS)[FontWeights]['fontFamily'];
+  fontWeight: (typeof FONT_WEIGHTS)[FontWeights]['fontWeight'];
 };
 
 export type FontPresets = Record<FontPresetsNames, FontSettings>;

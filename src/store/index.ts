@@ -1,4 +1,3 @@
-export * from './slices';
 export * from './store';
 export * from './selectors';
-export * from './use-actions';
+export * from './types';
