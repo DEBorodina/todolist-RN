@@ -1,6 +1,6 @@
 name: CI
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   install:
@@ -9,51 +9,49 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: yarn install
-
-      - name: Upload node_modules as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-modules
-          path: node_modules
 
   lint:
     runs-on: ubuntu-latest
-    needs: install # This ensures that the install job runs before this job
+    needs: install
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: ls -la
-        run: ls -la
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
+      - name: Cache node_modules
+        uses: actions/cache@v3
         with:
-          name: node-modules
           path: node_modules
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: ls -la 1
-        run: ls -la
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Run ESLint
-        run: ls -la && yarn lint
+        run: yarn lint
 
   test:
     runs-on: ubuntu-latest
-    needs: install # This ensures that the install job runs before this job
+    needs: install
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
+      - name: Cache node_modules
+        uses: actions/cache@v3
         with:
-          name: node-modules
           path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Run tests
         run: yarn test
