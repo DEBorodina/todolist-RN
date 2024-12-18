@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: ls -la
+        run: ls -la
 
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
