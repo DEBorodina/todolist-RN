@@ -1,0 +1,41 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
+
+import { USER_ID_KEY } from '@constants';
+import { fireEvent, render, screen, waitFor } from '@test-utils';
+
+import { StartScreen } from './StartScreen';
+import { BUTTON_TEXT, SUBTITLE, TITLE } from './config';
+
+jest.mock('react-native-uuid', () => {
+  return {
+    v4: jest.fn(() => 1),
+  };
+});
+
+const mockSetUserId = jest.fn();
+jest.mock('@store', () => ({
+  useStore: jest.fn(() => mockSetUserId),
+}));
+
+describe('StartScreen', () => {
+  it('renders correctly', () => {
+    render(<StartScreen />);
+
+    expect(screen.getByText(TITLE)).toBeOnTheScreen();
+    expect(screen.getByText(BUTTON_TEXT)).toBeOnTheScreen();
+    expect(screen.getByText(SUBTITLE)).toBeOnTheScreen();
+  });
+
+  it('sets userId on click', async () => {
+    render(<StartScreen />);
+
+    const button = screen.getByText(BUTTON_TEXT);
+    fireEvent.press(button);
+
+    expect(mockSetUserId).toHaveBeenCalledWith(1);
+    await waitFor(async () => {
+      expect(AsyncStorage.setItem).toHaveBeenCalledWith(USER_ID_KEY, '1');
+    });
+  });
+});
