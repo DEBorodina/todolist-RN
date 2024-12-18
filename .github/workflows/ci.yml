@@ -34,7 +34,7 @@ jobs:
           path: node_modules
 
       - name: Install dependencies
-          run: yarn install
+        run: yarn install
 
       - name: ls -la 1
         run: ls -la
