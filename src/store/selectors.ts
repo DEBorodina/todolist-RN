@@ -1,3 +1,4 @@
-import { TState } from './store';
+import { Store } from './types';
 
-export const selectUserId = (state: TState) => state.user.id;
+export const selectUserId = (state: Store) => state.userId;
+export const selectSetUserId = (state: Store) => state.setUserId;

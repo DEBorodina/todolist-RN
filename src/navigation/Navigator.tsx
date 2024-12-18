@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import { USER_ID_KEY } from '@constants';
 import { StartScreen } from '@screens';
-import { selectUserId, useActions } from '@store';
+import { selectSetUserId, selectUserId, useStore } from '@store';
 import { getAsyncStorageItem } from '@utils';
 
 import { Drawer } from './Drawer';
 
 export const Navigator = () => {
   const [hasCheckedUser, setHasCheckedUser] = useState(false);
-  const { setUserId } = useActions();
-  const user = useSelector(selectUserId);
+  const setUserId = useStore(selectSetUserId);
+  const user = useStore(selectUserId);
 
   useEffect(() => {
     const checkUser = async () => {

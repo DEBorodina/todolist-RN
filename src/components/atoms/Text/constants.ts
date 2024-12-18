@@ -15,7 +15,7 @@ export const FONT_SIZES = {
   m: { fontSize: 16 },
   l: { fontSize: 20 },
   xl: { fontSize: 24 },
-};
+} as const;
 
 export const fontWeightNames = Object.keys(FONT_WEIGHTS) as FontWeights[];
 export const fontSizeNames = Object.keys(FONT_SIZES) as FontSizes[];

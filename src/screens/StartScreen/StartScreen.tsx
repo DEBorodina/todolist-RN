@@ -6,7 +6,7 @@ import uuid from 'react-native-uuid';
 import { Button } from '@components/atoms/Button';
 import { Text } from '@components/atoms/Text';
 import { USER_ID_KEY } from '@constants';
-import { useActions } from '@store';
+import { selectSetUserId, useStore } from '@store';
 import { setAsyncStorageItem } from '@utils';
 
 import { WelcomeImage } from './components';
@@ -15,7 +15,7 @@ import { Container, Layout } from './styles';
 import { StartScreenProps } from './types';
 
 export const StartScreen: FC<StartScreenProps> = () => {
-  const { setUserId } = useActions();
+  const setUserId = useStore(selectSetUserId);
 
   const handleStart = () => {
     const userId = uuid.v4();
