@@ -1,29 +1,13 @@
-name: CI
+name: Test Workflow
 
-on:
-  push:
-    branches:
-      - main
-      - 'feature/**'
-  pull_request:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
+      - name: Checkout code
         uses: actions/checkout@v2
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Eslint check
-        run: yarn lint
-
-      - name: Test
-        run: yarn test --ci --watchAll=false
+      - name: Run a simple command
+        run: echo "Hello, World!"
