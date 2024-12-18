@@ -33,7 +33,7 @@ jobs:
           name: node-modules
           path: node_modules
 
-       - name: ls -la 1
+      - name: ls -la 1
         run: ls -la
 
       - name: Run ESLint
