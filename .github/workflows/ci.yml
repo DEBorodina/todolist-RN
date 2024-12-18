@@ -1,9 +1,11 @@
-name: Checks
-on: [pull_request]
+name: CI
+
+on: [push, pull_request]
 
 jobs:
-  check:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -13,5 +15,8 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Run a simple command
-        run: echo "Hello, World!"
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test --ci --watchAll=false
