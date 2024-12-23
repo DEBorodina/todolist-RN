@@ -1,10 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+
+import { MainLayout } from '@components/layouts/MainLayout';
 
 export const MainScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <MainLayout>
       <Text>MainScreen</Text>
-    </View>
+    </MainLayout>
   );
 };
