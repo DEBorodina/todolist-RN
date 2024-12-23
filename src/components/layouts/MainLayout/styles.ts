@@ -4,6 +4,7 @@ export const StyledMainLayout = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+  background: ${({ theme }) => theme.colors.primaryBackground};
 `;
 
 export const StyledBackground = styled.ImageBackground`
@@ -11,6 +12,6 @@ export const StyledBackground = styled.ImageBackground`
   aspect-ratio: 1;
   justify-content: center;
   align-items: center;
-  top: -10px;
+  top: -50px;
   position: absolute;
 `;

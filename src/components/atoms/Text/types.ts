@@ -24,5 +24,5 @@ export type StyledTextProps = {
 };
 
 export type TextProps = {
-  children: string;
+  children: string | number;
 } & Partial<StyledTextProps>;
