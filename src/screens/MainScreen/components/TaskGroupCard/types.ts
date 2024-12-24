@@ -4,6 +4,6 @@ export type StyledTaskGroupCardProps = {
 
 export type TaskGroupCardProps = StyledTaskGroupCardProps & {
   iconName: string;
-  category: string;
+  name: string;
   tasksAmount: number;
 };

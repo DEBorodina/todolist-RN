@@ -10,7 +10,7 @@ export const TaskGroupCard: FC<TaskGroupCardProps> = ({
   color,
   tasksAmount,
   iconName,
-  category,
+  name,
 }) => (
   <StyledTaskGroupCard color={color} activeOpacity={0.7}>
     <TasksAmount>
@@ -20,7 +20,7 @@ export const TaskGroupCard: FC<TaskGroupCardProps> = ({
     </TasksAmount>
     <Icon name={iconName} size={30} color="#fff" />
     <Text color="primaryInverted" styler={{ marginTop: 8 }}>
-      {category}
+      {name}
     </Text>
   </StyledTaskGroupCard>
 );
