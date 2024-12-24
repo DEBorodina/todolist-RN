@@ -9,7 +9,7 @@ export const StyledTaskInput = styled.TextInput`
   width: 280px;
   height: 48px;
   padding: 8px 16px 8px 35px;
-  background: ${({ theme }) => theme.colors.primaryBackground};
+  background: ${({ theme }) => theme.colors.primaryInverted};
   border-radius: 12px;
   box-shadow: 1px 1px 4px #00000040;
 `;

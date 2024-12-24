@@ -14,3 +14,9 @@ export const sizes = {
 };
 
 export const activeOpacity = 0.8;
+
+export const SPINNER_COLORS = {
+  primary: 'primaryInverted',
+  secondary: 'primaryInverted',
+  primaryInverted: 'primary',
+} as const;

@@ -4,7 +4,7 @@ export const StyledMainLayout = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.primaryBackground};
+  background: ${({ theme }) => theme.colors.primaryInverted};
 `;
 
 export const StyledBackground = styled.ImageBackground`

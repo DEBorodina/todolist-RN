@@ -11,7 +11,8 @@
       "@utils": ["src/utils"],
       "@screens": ["src/screens"],
       "@constants": ["src/constants"],
-      "@store": ["src/store"]
+      "@store": ["src/store"],
+      "@firestore": ["src/firestore"]
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
   }

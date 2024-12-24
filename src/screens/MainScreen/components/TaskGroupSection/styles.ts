@@ -14,5 +14,5 @@ export const AddButton = styled.TouchableOpacity`
   border: 1px solid ${({ theme }) => theme.colors.pink};
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.primaryBackground};
+  background: ${({ theme }) => theme.colors.primaryInverted};
 `;

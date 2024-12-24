@@ -1,9 +1,5 @@
-export type StyledTaskGroupCardProps = {
-  color: string;
-};
+import { Category } from '@firestore';
 
-export type TaskGroupCardProps = StyledTaskGroupCardProps & {
-  iconName: string;
-  name: string;
-  tasksAmount: number;
-};
+export type StyledTaskGroupCardProps = Pick<Category, 'color'>;
+
+export type TaskGroupCardProps = Category;

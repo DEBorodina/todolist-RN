@@ -16,6 +16,7 @@ module.exports = {
           '@screens': './src/screens',
           '@store': './src/store',
           '@constants': './src/constants',
+          '@firestore': './src/firestore',
           'assets/*': './assets/*',
         },
       },

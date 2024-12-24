@@ -4,7 +4,7 @@ export const colors = {
   [LIGHT]: {
     primary: '#9BA3EB',
     secondary: '#646FD4',
-    primaryBackground: '#FFFFFF',
+    primaryInverted: '#FFFFFF',
     pink: '#D25EB0',
     text: {
       primary: '#363636',
@@ -16,7 +16,7 @@ export const colors = {
   [DARK]: {
     primary: '#9BA3EB',
     secondary: '#646FD4',
-    primaryBackground: '#FFFFFF',
+    primaryInverted: '#FFFFFF',
     pink: '#d25EEB0',
     text: {
       primary: '#363636',

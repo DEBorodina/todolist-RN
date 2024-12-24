@@ -13,5 +13,6 @@ export type StyledButtonProps = {
 
 export type ButtonProps = {
   children: ReactNode;
-  onPress: () => void;
+  onClick: () => void;
+  isLoading?: boolean;
 } & Partial<StyledButtonProps>;
