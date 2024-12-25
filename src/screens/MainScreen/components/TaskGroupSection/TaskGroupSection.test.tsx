@@ -6,6 +6,6 @@ import { TaskGroupSection } from './TaskGroupSection';
 
 describe('TaskGroupSection', () => {
   it('renders correctly', () => {
-    render(<TaskGroupSection />);
+    render(<TaskGroupSection categories={[]} />);
   });
 });

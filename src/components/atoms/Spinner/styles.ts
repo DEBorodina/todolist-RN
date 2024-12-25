@@ -9,19 +9,22 @@ export const Container = styled.View<ContainerProps>`
   height: ${({ size }) => SIZES[size]}px;
   justify-content: center;
   align-items: center;
-`;
-
-export const Background = styled.View<BackgroundProps>`
-  width: 100%;
-  height: 100%;
-  border-color: ${({ theme, color }) => theme.colors[color]};
-  border-radius: ${({ size }) => SIZES[size] / 2}px;
-  border-width: ${({ size }) => SIZES[size] / 10}px;
-  opacity: 0.25;
+  margin: auto;
 `;
 
 export const Progress = styled(Animated.View)<BackgroundProps>`
+  width: 100%;
+  height: 100%;
   position: absolute;
+  border-radius: ${({ size }) => SIZES[size] / 2}px;
+  border-left-color: ${({ theme, color }) => theme.colors[color]};
+  border-bottom-color: ${({ theme, color }) => theme.colors[color]}40;
+  border-right-color: ${({ theme, color }) => theme.colors[color]}40;
+  border-top-color: ${({ theme, color }) => theme.colors[color]};
+  border-width: ${({ size }) => SIZES[size] / 10}px;
+`;
+
+/* position: absolute;
   width: 100%;
   height: 100%;
   border-top-color: ${({ theme, color }) => theme.colors[color]};
@@ -29,5 +32,4 @@ export const Progress = styled(Animated.View)<BackgroundProps>`
   border-left-color: transparent;
   border-right-color: transparent;
   border-bottom-color: transparent;
-  border-width: ${({ size }) => SIZES[size] / 10}px;
-`;
+  border-width: ${({ size }) => SIZES[size] / 10}px; */

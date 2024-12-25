@@ -37,7 +37,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
 
   return (
     <MainLayout>
-      {isLoading ? (
+      {!isLoading ? (
         <Spinner size="l" />
       ) : (
         <>

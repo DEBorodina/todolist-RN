@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Easing } from 'react-native';
 
-import { Background, Container, Progress } from './styles';
+import { Container, Progress } from './styles';
 import { SpinnerProps } from './types';
 
 const startRotationAnimation = (
@@ -31,7 +31,6 @@ export const Spinner = ({
 
   return (
     <Container testID="progressbar" size={size}>
-      <Background color={color} size={size} />
       <Progress
         testID="spinner"
         color={color}

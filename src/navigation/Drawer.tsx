@@ -36,6 +36,7 @@ export const Drawer = () => {
           headerTitle: '',
           headerLeft: () => renderBurgerMenu(navigation),
           headerRight: () => renderLogo(),
+          navigationBarColor: '#ee0022',
         })}>
         <Screen name="MainScreen" component={MainScreen} />
         <Screen
