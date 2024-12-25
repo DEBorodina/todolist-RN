@@ -6,5 +6,5 @@ export const TitleView = styled.View`
 `;
 
 export const Header = styled.View`
-  margin-bottom: 110px;
+  margin: 100px 0;
 `;
