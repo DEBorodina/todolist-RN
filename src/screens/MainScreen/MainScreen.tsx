@@ -6,7 +6,7 @@ import { MainLayout } from '@components/layouts/MainLayout';
 import { Category, getFirestoreCategories } from '@firestore';
 import { selectUserId, useStore } from '@store';
 
-import { TaskGroupSection } from './components/TaskGroupSection';
+import { CategoryCardsSection } from './components/CategoryCardsSection';
 import { TaskInput } from './components/TaskInput';
 import { formatDate, getTasksAmount } from './helpers';
 import { Header, TitleView } from './styles';
@@ -37,7 +37,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
 
   return (
     <MainLayout>
-      {!isLoading ? (
+      {isLoading ? (
         <Spinner size="l" />
       ) : (
         <>
@@ -54,7 +54,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
             </Text>
             <TaskInput />
           </Header>
-          <TaskGroupSection categories={categories || []} />
+          <CategoryCardsSection categories={categories || []} />
         </>
       )}
     </MainLayout>

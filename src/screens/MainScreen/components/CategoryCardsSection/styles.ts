@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const StyledTaskGroupSection = styled.View`
+export const StyledCategoryCardsSection = styled.View`
   width: 328px;
   flex-direction: row;
   gap: 14px;

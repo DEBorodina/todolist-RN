@@ -3,16 +3,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Text } from '@components/atoms/Text';
 
-import { StyledTaskGroupCard, TasksAmount } from './styles';
-import { TaskGroupCardProps } from './types';
+import { StyledCategoryCard, TasksAmount } from './styles';
+import { CategoryCardProps } from './types';
 
-export const TaskGroupCard: FC<TaskGroupCardProps> = ({
+export const CategoryCard: FC<CategoryCardProps> = ({
   color,
   tasksAmount,
   iconName,
   name,
 }) => (
-  <StyledTaskGroupCard color={color} activeOpacity={0.7}>
+  <StyledCategoryCard color={color} activeOpacity={0.7}>
     <TasksAmount>
       <Text color="primaryInverted" view="regular-m">
         {tasksAmount}
@@ -22,5 +22,5 @@ export const TaskGroupCard: FC<TaskGroupCardProps> = ({
     <Text color="primaryInverted" styler={{ marginTop: 8 }}>
       {name}
     </Text>
-  </StyledTaskGroupCard>
+  </StyledCategoryCard>
 );

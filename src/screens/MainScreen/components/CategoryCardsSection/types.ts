@@ -1,5 +1,5 @@
 import { Category } from '@firestore';
 
-export type TaskGroupSectionProps = {
+export type CategoryCardsSectionProps = {
   categories: Category[];
 };

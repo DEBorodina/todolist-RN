@@ -1,17 +1,21 @@
 import React from 'react';
 
 import { StatusBar } from '@components/atoms/StatusBar';
+import { ModalPortal, ModalProvider } from '@components/layouts/Modal';
 import { GlobalThemeProvider } from '@theme';
 
 import { Navigator } from './navigation/Navigator';
 
 function App(): React.JSX.Element {
   return (
-    <GlobalThemeProvider>
-      <StatusBar>
-        <Navigator />
-      </StatusBar>
-    </GlobalThemeProvider>
+    <ModalProvider>
+      <GlobalThemeProvider>
+        <StatusBar>
+          <Navigator />
+        </StatusBar>
+        <ModalPortal />
+      </GlobalThemeProvider>
+    </ModalProvider>
   );
 }
 

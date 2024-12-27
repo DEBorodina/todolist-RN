@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, screen } from '@test-utils';
 
-import { TaskGroupCard } from './TaskGroupCard';
+import { CategoryCard } from './CategoryCard';
 
 const card = {
   color: '#2A8899',
@@ -11,9 +11,9 @@ const card = {
   tasksAmount: 12,
 };
 
-describe('TaskGroupCard', () => {
+describe('CategoryCard', () => {
   it('renders correctly', () => {
-    render(<TaskGroupCard {...card} />);
+    render(<CategoryCard {...card} />);
 
     expect(screen.getByText(card.name)).toBeOnTheScreen();
     expect(screen.getByText(String(card.tasksAmount))).toBeOnTheScreen();
