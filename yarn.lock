@@ -12411,6 +12411,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.54.2":
+  version: 7.54.2
+  resolution: "react-hook-form@npm:7.54.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 49a867ece9894dca82f6552e5eefd012b7db962c56a7543f9275ae0b6ec202d549973c3694e7f97436afc2396549cb8fc8777241dd660b71793547aa9c8e5686
+  languageName: node
+  linkType: hard
+
 "react-is@npm:18.1.0":
   version: 18.1.0
   resolution: "react-is@npm:18.1.0"
@@ -14043,6 +14052,7 @@ __metadata:
     prettier: 2.8.8
     react: 18.3.1
     react-dom: 18.3.1
+    react-hook-form: ^7.54.2
     react-native: ^0.75.3
     react-native-cli: ^2.0.1
     react-native-gesture-handler: 2.15.0

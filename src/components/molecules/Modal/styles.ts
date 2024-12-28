@@ -13,11 +13,9 @@ export const StyledModalBackground = styled.TouchableOpacity`
 
 export const StyledModal = styled(Animated.View)`
   background-color: ${({ theme }) => theme.colors.primaryInverted};
-  width: 180px;
   border-radius: 18px;
   padding: 20px;
   box-shadow: 1px 1px 8px #00000040;
-  height: 180px;
   elevation: 10;
 `;
 

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { FadeInDown } from 'react-native-reanimated';
 
 import { ModalContext } from './context';
@@ -14,7 +15,11 @@ export const Modal = ({ children }: ModalProps) => {
 
   return (
     <StyledModalBackground onPress={handlePress} activeOpacity={1}>
-      <StyledModal entering={FadeInDown.duration(300)}>{children}</StyledModal>
+      <TouchableOpacity onPress={() => {}} activeOpacity={1}>
+        <StyledModal entering={FadeInDown.duration(300)}>
+          {children}
+        </StyledModal>
+      </TouchableOpacity>
     </StyledModalBackground>
   );
 };

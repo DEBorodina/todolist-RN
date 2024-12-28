@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 
+import { Input } from '@components/atoms/Input';
 import { Spinner } from '@components/atoms/Spinner';
 import { Text } from '@components/atoms/Text';
 import { MainLayout } from '@components/layouts/MainLayout';
@@ -7,7 +8,6 @@ import { Category, getFirestoreCategories } from '@firestore';
 import { selectUserId, useStore } from '@store';
 
 import { CategoryCardsSection } from './components/CategoryCardsSection';
-import { TaskInput } from './components/TaskInput';
 import { formatDate, getTasksAmount } from './helpers';
 import { Header, TitleView } from './styles';
 import { MainScreenProps } from './types';
@@ -52,7 +52,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
             <Text view="medium-s" styler={{ marginBottom: 16 }}>
               {date}
             </Text>
-            <TaskInput />
+            <Input />
           </Header>
           <CategoryCardsSection categories={categories || []} />
         </>

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { useTheme } from 'styled-components/native';
 
-import { useModal } from '@components/layouts/Modal';
+import { useModal } from '@components/molecules/Modal';
 
 import { AddCategoryForm } from '../AddCategoryForm';
 import { CategoryCard } from '../CategoryCard';

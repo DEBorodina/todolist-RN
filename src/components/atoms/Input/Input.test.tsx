@@ -2,10 +2,10 @@ import React from 'react';
 
 import { render } from '@test-utils';
 
-import { TaskInput } from './TaskInput';
+import { Input } from './Input';
 
-describe('TaskInput', () => {
+describe('Input', () => {
   it('renders correctly', () => {
-    render(<TaskInput />);
+    render(<Input />);
   });
 });
