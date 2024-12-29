@@ -1,11 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { SlideInLeft } from 'react-native-reanimated';
 import uuid from 'react-native-uuid';
 
 import { Button } from '@components/atoms/Button';
 import { Text } from '@components/atoms/Text';
-import { USER_ID_KEY } from '@constants';
+import { DEFAULT_CATEGORIES, USER_ID_KEY } from '@constants';
+import { addCategories } from '@firestore';
 import { selectSetUserId, useStore } from '@store';
 import { setAsyncStorageItem } from '@utils';
 
@@ -16,11 +17,23 @@ import { StartScreenProps } from './types';
 
 export const StartScreen: FC<StartScreenProps> = () => {
   const setUserId = useStore(selectSetUserId);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleStart = () => {
+  const handleStart = async () => {
+    setIsLoading(true);
+
     const userId = uuid.v4();
-    setAsyncStorageItem(userId, USER_ID_KEY);
+    await setAsyncStorageItem(userId, USER_ID_KEY);
+
+    await addCategories(
+      DEFAULT_CATEGORIES.map(category => ({
+        ...category,
+        userId,
+      })),
+    );
+
     setUserId(userId);
+    setIsLoading(false);
   };
 
   return (
@@ -35,7 +48,10 @@ export const StartScreen: FC<StartScreenProps> = () => {
             {SUBTITLE}
           </Text>
         </Animated.View>
-        <Button onPress={handleStart} styler={{ marginTop: 32 }}>
+        <Button
+          onClick={handleStart}
+          styler={{ marginTop: 32 }}
+          isLoading={isLoading}>
           <Text view="medium-m" color="primaryInverted">
             {BUTTON_TEXT}
           </Text>

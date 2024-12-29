@@ -28,10 +28,25 @@
         "types": "templates/component/types.ts",
         "index": "templates/component/index.ts",
         "style": "templates/component/styles.ts",
+        "test": "templates/component/TemplateName.test.tsx"
+      },
+      "path": "src/screens",
+      "withTypes": true,
+      "withIndex": true,
+      "withStyle": true,
+      "withTest": true,
+      "withLazy": false
+    },
+    "layout": {
+      "customTemplates": {
+        "component": "templates/component/TemplateName.tsx",
+        "types": "templates/component/types.ts",
+        "index": "templates/component/index.ts",
+        "style": "templates/component/styles.ts",
         "test": "templates/component/TemplateName.test.tsx",
         "story": "templates/component/TemplateName.stories.tsx"
       },
-      "path": "src/screens",
+      "path": "src/components/layouts",
       "withTypes": true,
       "withIndex": true,
       "withStyle": true,

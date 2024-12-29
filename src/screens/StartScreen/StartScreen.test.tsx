@@ -14,6 +14,11 @@ jest.mock('react-native-uuid', () => {
 });
 
 const mockSetUserId = jest.fn();
+
+jest.mock('@react-native-firebase/firestore', () => () => ({
+  collection: () => ({ add: jest.fn() }),
+}));
+
 jest.mock('@store', () => ({
   useStore: jest.fn(() => mockSetUserId),
 }));
@@ -33,9 +38,9 @@ describe('StartScreen', () => {
     const button = screen.getByText(BUTTON_TEXT);
     fireEvent.press(button);
 
-    expect(mockSetUserId).toHaveBeenCalledWith(1);
     await waitFor(async () => {
       expect(AsyncStorage.setItem).toHaveBeenCalledWith(USER_ID_KEY, '1');
+      expect(mockSetUserId).toHaveBeenCalledWith(1);
     });
   });
 });

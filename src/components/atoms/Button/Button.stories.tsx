@@ -18,7 +18,12 @@ const meta = {
       options: ['m', 'circle'],
       control: { type: 'radio' },
     },
-    onPress: { action: 'pressed the button' },
+    isLoading: {
+      options: ['true', 'false'],
+      mapping: { true: true, false: false },
+      control: { type: 'radio' },
+    },
+    onClick: { action: 'pressed the button' },
   },
 } as Meta<typeof Button>;
 
