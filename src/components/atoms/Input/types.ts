@@ -12,9 +12,3 @@ export type StyledInputProps = {
   withSearchIcon: boolean;
   styler?: Styler;
 };
-
-export type ControlledInputProps = Pick<StyledInputProps, 'size'> &
-  Pick<InputProps, 'placeholder' | 'withSearchIcon'> & {
-    name: string;
-    rules?: object;
-  };

@@ -8,3 +8,9 @@ export const TitleView = styled.View`
 export const Header = styled.View`
   margin: 100px 0;
 `;
+
+export const Container = styled.View`
+  width: 100%;
+  align-items: center;
+  flex: 1;
+`;

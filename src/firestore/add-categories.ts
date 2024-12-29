@@ -6,7 +6,13 @@ import { BaseCategory } from './types';
 export const addCategories = async (categories: BaseCategory[]) => {
   await Promise.all(
     categories.map(async category => {
-      await firestore().collection(CATEGORIES).add(category);
+      addCategory(category);
     }),
   );
+};
+
+export const addCategory = async (category: BaseCategory) => {
+  const newCategory = await firestore().collection(CATEGORIES).add(category);
+
+  return newCategory.id;
 };

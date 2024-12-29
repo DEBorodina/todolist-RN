@@ -5,6 +5,8 @@ export const StyledCategoryCardsSection = styled.View`
   flex-direction: row;
   gap: 14px;
   flex-wrap: wrap;
+  margin: 0 auto;
+  padding-bottom: 32px;
 `;
 
 export const AddButton = styled.TouchableOpacity`

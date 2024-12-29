@@ -12,6 +12,7 @@ export const Container = styled.View`
 
 export const StyledInput = styled.TextInput<StyledInputProps>`
   width: ${({ size }) => SIZES[size].width}px;
+  height: ${({ size }) => SIZES[size].height}px;
   padding: 8px 16px 8px 16px;
   padding-left: ${({ withSearchIcon }) => (withSearchIcon ? 35 : 16)}px;
   ${({ styler }) => styler};

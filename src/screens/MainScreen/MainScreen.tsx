@@ -9,11 +9,11 @@ import { selectUserId, useStore } from '@store';
 
 import { CategoryCardsSection } from './components/CategoryCardsSection';
 import { formatDate, getTasksAmount } from './helpers';
-import { Header, TitleView } from './styles';
+import { Container, Header, TitleView } from './styles';
 import { MainScreenProps } from './types';
 
 export const MainScreen: FC<MainScreenProps> = () => {
-  const [categories, setCategories] = useState<Category[]>();
+  const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const userId = useStore(selectUserId);
 
@@ -41,20 +41,25 @@ export const MainScreen: FC<MainScreenProps> = () => {
         <Spinner size="l" />
       ) : (
         <>
-          <Header>
-            <TitleView>
-              <Text view="medium-xl">you have </Text>
-              <Text color="primaryInverted" view="medium-xl">
-                {`${taskAmount} tasks`}
+          <Container>
+            <Header>
+              <TitleView>
+                <Text view="medium-xl">you have </Text>
+                <Text color="primaryInverted" view="medium-xl">
+                  {`${taskAmount} tasks`}
+                </Text>
+                <Text view="medium-xl">!</Text>
+              </TitleView>
+              <Text view="medium-s" styler={{ marginBottom: 16 }}>
+                {date}
               </Text>
-              <Text view="medium-xl">!</Text>
-            </TitleView>
-            <Text view="medium-s" styler={{ marginBottom: 16 }}>
-              {date}
-            </Text>
-            <Input />
-          </Header>
-          <CategoryCardsSection categories={categories || []} />
+              <Input withSearchIcon size="l" />
+            </Header>
+            <CategoryCardsSection
+              categories={categories || []}
+              setCategories={setCategories}
+            />
+          </Container>
         </>
       )}
     </MainLayout>

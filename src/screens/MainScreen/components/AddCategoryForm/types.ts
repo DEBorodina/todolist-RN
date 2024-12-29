@@ -1,6 +1,10 @@
 import { Category } from '@firestore';
 
-export type CategoryCardsSectionProps = {
-  categories: Category[];
+export type FromState = {
+  name: string;
+  iconName: string;
+};
+
+export type AddCategoryFormProps = {
   setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
 };
