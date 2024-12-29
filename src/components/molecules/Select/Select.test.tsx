@@ -6,6 +6,6 @@ import { Select } from './Select';
 
 describe('Select', () => {
   it('renders correctly', () => {
-    render(<Select />);
+    render(<Select renderItem={() => null} items={[]} />);
   });
 });

@@ -6,6 +6,6 @@ import { CategoryCardsSection } from './CategoryCardsSection';
 
 describe('CategoryCardsSection', () => {
   it('renders correctly', () => {
-    render(<CategoryCardsSection categories={[]} />);
+    render(<CategoryCardsSection categories={[]} setCategories={() => {}} />);
   });
 });
