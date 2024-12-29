@@ -6,12 +6,18 @@ import { InputProps } from './types';
 export const Input: FC<InputProps> = ({
   size = 'm',
   withSearchIcon = false,
+  withShadow = false,
   ...inputProps
 }) => (
   <Container>
     {withSearchIcon && (
       <SearchIcon name="search-sharp" size={17} color="#888888" />
     )}
-    <StyledInput withSearchIcon={withSearchIcon} size={size} {...inputProps} />
+    <StyledInput
+      withSearchIcon={withSearchIcon}
+      size={size}
+      withShadow={withShadow}
+      {...inputProps}
+    />
   </Container>
 );

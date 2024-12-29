@@ -10,5 +10,6 @@ export type InputProps = Partial<StyledInputProps> & {
 export type StyledInputProps = {
   size: 'm' | 'l';
   withSearchIcon: boolean;
+  withShadow: boolean;
   styler?: Styler;
 };

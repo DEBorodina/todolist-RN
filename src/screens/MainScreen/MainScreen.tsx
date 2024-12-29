@@ -53,7 +53,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
               <Text view="medium-s" styler={{ marginBottom: 16 }}>
                 {date}
               </Text>
-              <Input withSearchIcon size="l" />
+              <Input withSearchIcon size="l" withShadow />
             </Header>
             <CategoryCardsSection
               categories={categories || []}

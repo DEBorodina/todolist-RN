@@ -21,10 +21,10 @@ const meta = {
     },
     placeholder: { control: { type: 'text' } },
   },
-  parameters: {
-    controls: {
-      exclude: ['children'],
-    },
+  withShadow: {
+    option: ['true', 'false'],
+    mapping: { true: true, false: false },
+    control: { type: 'radio' },
   },
 } as Meta<typeof Select>;
 
