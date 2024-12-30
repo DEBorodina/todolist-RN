@@ -9,7 +9,6 @@ import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components/native';
 
-import { Params } from '@common-types';
 import { Text } from '@components/atoms/Text';
 import { MainScreen, TodosScreen } from '@screens';
 
@@ -17,11 +16,7 @@ import { BurgerMenu } from './components/BurgerMenu';
 import { Navigation } from './components/BurgerMenu/types';
 import { DrawerMenu } from './components/DrawerMenu';
 import { SCREENS } from './constants';
-
-export type RootDrawerParamList = {
-  TODOS_SCREEN: Params;
-  MAIN_SCREEN: undefined;
-};
+import { RootDrawerParamList } from './types';
 
 const { Navigator, Screen } = createDrawerNavigator<RootDrawerParamList>();
 

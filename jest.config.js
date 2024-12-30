@@ -10,6 +10,6 @@ module.exports = {
     '<rootDir>/.*.index.?(ts|tsx|js|jsx)',
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!(@react-native|react-native|react-native-reanimated|react-redux|react-native-vector-icons|@react-native-firebase|@react-navigation/drawer)/)',
+    'node_modules/(?!(@react-native|react-native|react-native-reanimated|react-redux|react-native-vector-icons|@react-native-firebase|@react-navigation)/)',
   ],
 };

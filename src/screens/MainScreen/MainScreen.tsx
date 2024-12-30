@@ -7,6 +7,7 @@ import { Spinner } from '@components/atoms/Spinner';
 import { Text } from '@components/atoms/Text';
 import { MainLayout } from '@components/layouts/MainLayout';
 import { getFirestoreCategories } from '@firestore';
+import { SCREENS } from '@navigation';
 import {
   selectCategories,
   selectSetCategories,
@@ -47,7 +48,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
   }, [setCategories, userId]);
 
   const handleSearch = () => {
-    navigation.navigate('TodosScreen', { filter: 'search', search });
+    navigation.navigate(SCREENS.TODOS_SCREEN, { filter: 'search', search });
   };
 
   return (

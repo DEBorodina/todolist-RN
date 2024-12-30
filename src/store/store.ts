@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import { THEME } from '@constants';
 import { Category } from '@firestore';
 import { DARK, LIGHT } from '@theme';
-import { getAsyncStorageItem, setAsyncStorageItem } from '@utils';
+import { setAsyncStorageItem } from '@utils';
 
 import { Store } from './types';
 
