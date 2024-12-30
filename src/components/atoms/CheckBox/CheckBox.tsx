@@ -13,9 +13,19 @@ export const CheckBox: FC<CheckBoxProps> = ({
   const {
     colors: { secondary },
   } = useTheme();
+
+  const handlePress = () => onChange(!isChecked);
+
   return (
-    <StyledCheckBox onPress={() => onChange(!isChecked)} styler={styler}>
-      {isChecked && <Icon name="checkmark" size={20} color={secondary} />}
+    <StyledCheckBox onPress={handlePress} styler={styler} testID="checkbox">
+      {isChecked && (
+        <Icon
+          name="checkmark"
+          size={20}
+          color={secondary}
+          testID="check-mark"
+        />
+      )}
     </StyledCheckBox>
   );
 };

@@ -14,6 +14,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children, isFullLayout }) => {
         source={src}
         resizeMode="cover"
         isFullLayout={isFullLayout}
+        testID="background"
       />
       {children}
     </StyledMainLayout>

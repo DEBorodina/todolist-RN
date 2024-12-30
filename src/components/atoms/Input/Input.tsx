@@ -26,10 +26,16 @@ export const Input: FC<InputProps> = ({
     <Container>
       {withSearchIcon && (
         <SearchIcon onPress={handlePress}>
-          <Icon name="search-sharp" size={17} color="#888888" />
+          <Icon
+            name="search-sharp"
+            size={17}
+            color="#888888"
+            testID="search-icon"
+          />
         </SearchIcon>
       )}
       <StyledInput
+        testID="input"
         withSearchIcon={withSearchIcon}
         size={size}
         withShadow={withShadow}
