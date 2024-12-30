@@ -1,9 +1,8 @@
-export type TodosScreenProps = {
-  route: {
-    params: {
-      filter: 'all' | 'category' | 'important' | 'done' | 'search';
-      categoryId?: string;
-      search?: string;
-    };
-  };
-};
+import { DrawerScreenProps } from '@react-navigation/drawer';
+
+import { RootDrawerParamList } from '@navigation';
+
+export type TodosScreenProps = DrawerScreenProps<
+  RootDrawerParamList,
+  'TODOS_SCREEN'
+>;

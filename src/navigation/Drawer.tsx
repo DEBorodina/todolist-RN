@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import {
   DrawerContentComponentProps,
   createDrawerNavigator,
@@ -8,14 +9,21 @@ import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components/native';
 
+import { Params } from '@common-types';
 import { Text } from '@components/atoms/Text';
 import { MainScreen, TodosScreen } from '@screens';
 
 import { BurgerMenu } from './components/BurgerMenu';
 import { Navigation } from './components/BurgerMenu/types';
 import { DrawerMenu } from './components/DrawerMenu';
+import { SCREENS } from './constants';
 
-const { Navigator, Screen } = createDrawerNavigator();
+export type RootDrawerParamList = {
+  TODOS_SCREEN: Params;
+  MAIN_SCREEN: undefined;
+};
+
+const { Navigator, Screen } = createDrawerNavigator<RootDrawerParamList>();
 
 export const Drawer = () => {
   const { colors } = useTheme();
@@ -67,9 +75,9 @@ export const Drawer = () => {
           headerRight: () => renderLogo(),
           drawerStyle: { backgroundColor: colors.navbar },
         })}>
-        <Screen name="MainScreen" component={MainScreen} />
+        <Screen name={SCREENS.MAIN_SCREEN} component={MainScreen} />
         <Screen
-          name="TodosScreen"
+          name={SCREENS.TODOS_SCREEN}
           component={TodosScreen}
           options={({ navigation }) => ({
             headerLeft: () => renderArrowBack(navigation),

@@ -14,4 +14,6 @@ export const DRAWER_MENU_ITEMS = [
     name: 'Done tasks',
     params: { filter: 'done' },
   },
-];
+] as const;
+
+export const SWITCH_THEME = 'Switch theme';

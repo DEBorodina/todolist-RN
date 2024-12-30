@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { useTheme } from 'styled-components/native';
 
