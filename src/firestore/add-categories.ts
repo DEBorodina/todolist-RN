@@ -3,15 +3,15 @@ import firestore from '@react-native-firebase/firestore';
 import { CATEGORIES } from './constants';
 import { BaseCategory } from './types';
 
-export const addCategories = async (categories: BaseCategory[]) => {
+export const addFirestoreCategories = async (categories: BaseCategory[]) => {
   await Promise.all(
     categories.map(async category => {
-      addCategory(category);
+      addFirestoreCategory(category);
     }),
   );
 };
 
-export const addCategory = async (category: BaseCategory) => {
+export const addFirestoreCategory = async (category: BaseCategory) => {
   const newCategory = await firestore().collection(CATEGORIES).add(category);
 
   return newCategory.id;

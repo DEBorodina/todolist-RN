@@ -1,25 +1,23 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { useTheme } from 'styled-components/native';
 
 import { useModal } from '@components/molecules/Modal';
+import { selectCategories, useStore } from '@store';
 
 import { AddCategoryForm } from '../AddCategoryForm';
 import { CategoryCard } from '../CategoryCard';
 
 import { AddButton, StyledCategoryCardsSection } from './styles';
-import { CategoryCardsSectionProps } from './types';
 
-export const CategoryCardsSection: FC<CategoryCardsSectionProps> = ({
-  categories,
-  setCategories,
-}) => {
+export const CategoryCardsSection = () => {
   const { colors } = useTheme();
   const { setModalContent, setIsOpen } = useModal();
+  const categories = useStore(selectCategories);
 
   const handleAddCategory = () => {
-    setModalContent(<AddCategoryForm setCategories={setCategories} />);
+    setModalContent(<AddCategoryForm />);
     setIsOpen(true);
   };
 

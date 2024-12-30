@@ -1,7 +1,7 @@
 export const DRAWER_MENU_ITEMS = [
   {
     iconName: 'calendar-clear-outline',
-    name: 'Daily tasks',
+    name: 'All tasks',
   },
   {
     name: 'Important tasks',

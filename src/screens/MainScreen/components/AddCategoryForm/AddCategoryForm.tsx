@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -8,18 +8,17 @@ import { Text } from '@components/atoms/Text';
 import { useModal } from '@components/molecules/Modal';
 import { Select } from '@components/molecules/Select';
 import { ICONS } from '@constants';
-import { addCategory } from '@firestore';
+import { addFirestoreCategory } from '@firestore';
 import { selectUserId, useStore } from '@store';
 import { getRandomColor } from '@utils';
 
 import { Container } from './styles';
-import { AddCategoryFormProps, FromState } from './types';
+import { FromState } from './types';
 
-export const AddCategoryForm: FC<AddCategoryFormProps> = ({
-  setCategories,
-}) => {
+export const AddCategoryForm = () => {
   const { control, handleSubmit } = useForm<FromState>();
   const [isLoading, setIsLoading] = useState(false);
+  const addCategory = useStore(state => state.addCategory);
 
   const userId = useStore(selectUserId);
   const { setIsOpen } = useModal();
@@ -43,15 +42,12 @@ export const AddCategoryForm: FC<AddCategoryFormProps> = ({
       userId: userId ?? '',
       tasksAmount: 0,
     };
-    const newCategoryId = await addCategory(newCategory);
+    const newCategoryId = await addFirestoreCategory(newCategory);
 
-    setCategories(prev => [
-      ...prev,
-      {
-        ...newCategory,
-        id: newCategoryId,
-      },
-    ]);
+    addCategory({
+      ...newCategory,
+      id: newCategoryId,
+    });
 
     setIsOpen(false);
     setIsLoading(false);

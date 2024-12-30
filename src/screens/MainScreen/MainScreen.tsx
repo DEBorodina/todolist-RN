@@ -4,8 +4,13 @@ import { Input } from '@components/atoms/Input';
 import { Spinner } from '@components/atoms/Spinner';
 import { Text } from '@components/atoms/Text';
 import { MainLayout } from '@components/layouts/MainLayout';
-import { Category, getFirestoreCategories } from '@firestore';
-import { selectUserId, useStore } from '@store';
+import { getFirestoreCategories } from '@firestore';
+import {
+  selectCategories,
+  selectSetCategories,
+  selectUserId,
+  useStore,
+} from '@store';
 
 import { CategoryCardsSection } from './components/CategoryCardsSection';
 import { formatDate, getTasksAmount } from './helpers';
@@ -13,7 +18,9 @@ import { Container, Header, TitleView } from './styles';
 import { MainScreenProps } from './types';
 
 export const MainScreen: FC<MainScreenProps> = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const categories = useStore(selectCategories);
+  const setCategories = useStore(selectSetCategories);
+
   const [isLoading, setIsLoading] = useState(true);
   const userId = useStore(selectUserId);
 
@@ -33,7 +40,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
     };
 
     getCategories();
-  }, [userId]);
+  }, [setCategories, userId]);
 
   return (
     <MainLayout>
@@ -55,10 +62,7 @@ export const MainScreen: FC<MainScreenProps> = () => {
               </Text>
               <Input withSearchIcon size="l" withShadow />
             </Header>
-            <CategoryCardsSection
-              categories={categories || []}
-              setCategories={setCategories}
-            />
+            <CategoryCardsSection />
           </Container>
         </>
       )}

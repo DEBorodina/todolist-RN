@@ -7,6 +7,7 @@ export const colors = {
     primaryInverted: '#FFFFFF',
     pink: '#D25EB0',
     lightGray: '#E7E7E7',
+    gray: '#CCCCCC',
     text: {
       primary: '#363636',
       secondary: '#8D93AB',
@@ -21,6 +22,7 @@ export const colors = {
     primaryInverted: '#FFFFFF',
     pink: '#d25EEB0',
     lightGray: '#E7E7E7',
+    gray: '#CCCCCC',
     text: {
       primary: '#363636',
       secondary: '#8D93AB',
