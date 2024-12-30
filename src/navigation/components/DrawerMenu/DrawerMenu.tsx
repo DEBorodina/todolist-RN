@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { useTheme } from 'styled-components';
 
 import { Text } from '@components/atoms/Text';
+import { selectSwitchTheme, useStore } from '@store';
 
 import { DRAWER_MENU_ITEMS } from './constants';
 import { ArrowIcon, Item, ItemIcon } from './styles';
@@ -14,14 +15,16 @@ export const DrawerMenu: FC<DrawerMenuProps> = props => {
     colors: { secondary, text },
   } = useTheme();
 
+  const switchTheme = useStore(selectSwitchTheme);
+
   return (
     <DrawerContentScrollView {...props}>
       <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
         <ArrowIcon name="arrow-back" size={30} color={secondary} />
       </TouchableOpacity>
-      {DRAWER_MENU_ITEMS.map(({ name, iconName }) => (
+      {DRAWER_MENU_ITEMS.map(({ name, iconName, params }) => (
         <Item
-          onPress={() => props.navigation.navigate('TodosScreen')}
+          onPress={() => props.navigation.navigate('TodosScreen', params)}
           key={name}>
           <ItemIcon name={iconName} size={20} color={text.secondary} />
           <Text view="regular-m" color="secondary">
@@ -29,6 +32,16 @@ export const DrawerMenu: FC<DrawerMenuProps> = props => {
           </Text>
         </Item>
       ))}
+      <Item onPress={switchTheme}>
+        <ItemIcon
+          name="color-palette-outline"
+          size={20}
+          color={text.secondary}
+        />
+        <Text view="regular-m" color="secondary">
+          Switch theme
+        </Text>
+      </Item>
     </DrawerContentScrollView>
   );
 };

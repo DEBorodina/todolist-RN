@@ -4,6 +4,7 @@ export type InputProps = Partial<StyledInputProps> & {
   placeholder?: string;
   onChangeText?: (value: string) => void;
   onBlur?: () => void;
+  onIconClick?: () => void;
   value?: string;
 };
 

@@ -19,10 +19,10 @@ import {
 import { AddTaskForm } from './components/AddTaskForm';
 import { DoneTasksBlock } from './components/DoneTasksBlock';
 import { TaskCard } from './components/TaskCard';
+import { filterTasks, getTitle } from './helpers';
 import { TodosScreenProps } from './types';
 
-export const TodosScreen: FC<TodosScreenProps> = () => {
-  const title = 'All Tasks';
+export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
   const { setIsOpen, setModalContent } = useModal();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -108,12 +108,18 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
   );
 
   useEffect(() => {
+    if (route.params.filter === 'done') {
+      return;
+    }
     setDisplayedTasks(tasks.filter(({ isDone }) => isDone === isDoneTasks));
-  }, [isDoneTasks, tasks]);
+  }, [isDoneTasks, route.params.filter, tasks]);
 
   useEffect(() => {
     const getTasks = async () => {
-      const newTasks = await getFirestoreTasks(userId);
+      const newTasks = filterTasks(
+        await getFirestoreTasks(userId),
+        route.params,
+      );
       setOpenedTaskId(newTasks[0]?.id);
       setTasks(newTasks);
 
@@ -121,9 +127,10 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
     };
 
     getTasks();
-  }, [userId]);
+  }, [route.params, userId]);
 
   const doneTasksAmount = tasks.filter(task => task.isDone).length;
+  const title = getTitle(route.params, categories);
 
   return (
     <MainLayout isFullLayout>
@@ -151,14 +158,18 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
               )}
             />
           </View>
-          <DoneTasksBlock
-            tasksAmount={doneTasksAmount}
-            isOpen={isDoneTasks}
-            onPress={() => setIsDoneTasks(!isDoneTasks)}
-          />
-          <Button size="circle-l" color="secondary" onClick={handleAdd}>
-            <Icon name="plus-a" size={19} color="#fff" />
-          </Button>
+          {route.params.filter !== 'done' && (
+            <>
+              <DoneTasksBlock
+                tasksAmount={doneTasksAmount}
+                isOpen={isDoneTasks}
+                onPress={() => setIsDoneTasks(!isDoneTasks)}
+              />
+              <Button size="circle-l" color="secondary" onClick={handleAdd}>
+                <Icon name="plus-a" size={19} color="#fff" />
+              </Button>
+            </>
+          )}
         </>
       )}
     </MainLayout>

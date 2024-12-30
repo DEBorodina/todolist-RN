@@ -1,5 +1,7 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { FC, useEffect, useMemo, useState } from 'react';
 
+import { UseNavigation } from '@common-types';
 import { Input } from '@components/atoms/Input';
 import { Spinner } from '@components/atoms/Spinner';
 import { Text } from '@components/atoms/Text';
@@ -20,6 +22,8 @@ import { MainScreenProps } from './types';
 export const MainScreen: FC<MainScreenProps> = () => {
   const categories = useStore(selectCategories);
   const setCategories = useStore(selectSetCategories);
+  const navigation = useNavigation<UseNavigation>();
+  const [search, setSearch] = useState('');
 
   const [isLoading, setIsLoading] = useState(true);
   const userId = useStore(selectUserId);
@@ -42,6 +46,10 @@ export const MainScreen: FC<MainScreenProps> = () => {
     getCategories();
   }, [setCategories, userId]);
 
+  const handleSearch = () => {
+    navigation.navigate('TodosScreen', { filter: 'search', search });
+  };
+
   return (
     <MainLayout>
       {isLoading ? (
@@ -60,7 +68,15 @@ export const MainScreen: FC<MainScreenProps> = () => {
               <Text view="medium-s" styler={{ marginBottom: 16 }}>
                 {date}
               </Text>
-              <Input withSearchIcon size="l" withShadow />
+              <Input
+                withSearchIcon
+                size="l"
+                withShadow
+                value={search}
+                onChangeText={setSearch}
+                onIconClick={handleSearch}
+                placeholder="Search tasks"
+              />
             </Header>
             <CategoryCardsSection />
           </Container>

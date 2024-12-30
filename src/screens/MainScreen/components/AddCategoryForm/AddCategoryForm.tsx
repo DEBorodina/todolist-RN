@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useTheme } from 'styled-components/native';
 
 import { Button } from '@components/atoms/Button';
 import { Input } from '@components/atoms/Input';
@@ -9,7 +10,7 @@ import { useModal } from '@components/molecules/Modal';
 import { Select } from '@components/molecules/Select';
 import { ICONS } from '@constants';
 import { addFirestoreCategory } from '@firestore';
-import { selectUserId, useStore } from '@store';
+import { selectAddCategory, selectUserId, useStore } from '@store';
 import { getRandomColor } from '@utils';
 
 import { Container } from './styles';
@@ -18,7 +19,12 @@ import { FromState } from './types';
 export const AddCategoryForm = () => {
   const { control, handleSubmit } = useForm<FromState>();
   const [isLoading, setIsLoading] = useState(false);
-  const addCategory = useStore(state => state.addCategory);
+  const addCategory = useStore(selectAddCategory);
+  const {
+    colors: {
+      text: { primary },
+    },
+  } = useTheme();
 
   const userId = useStore(selectUserId);
   const { setIsOpen } = useModal();
@@ -96,7 +102,7 @@ export const AddCategoryForm = () => {
               renderItem={item => (
                 <>
                   <Text>{item}</Text>
-                  <Icon name={item} />
+                  <Icon name={item} color={primary} />
                 </>
               )}
             />
