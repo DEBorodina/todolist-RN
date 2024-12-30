@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const StyledTaskCard = styled.View`
+export const StyledTaskCard = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.primaryInverted};
   width: 90%;
   padding: 16px;

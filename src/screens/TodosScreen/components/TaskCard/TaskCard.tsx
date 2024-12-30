@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { FlatList, View } from 'react-native';
 
 import { CheckBox } from '@components/atoms/CheckBox';
@@ -23,11 +23,13 @@ export const TaskCard: FC<TaskCardProps> = ({
   onDelete,
   onDone,
   onSubtaskDone,
+  onTaskPress,
+  onEdit,
 }) => {
-  const [] = useState(false);
+  const isExpandable = subtasks && subtasks.length > 0;
 
   return (
-    <StyledTaskCard>
+    <StyledTaskCard onPress={onTaskPress} activeOpacity={1}>
       <Content>
         <CheckBoxContainer>
           <CheckBox onChange={onDone} isChecked={isDone} />
@@ -39,7 +41,7 @@ export const TaskCard: FC<TaskCardProps> = ({
           <Text view="light-s" color="secondary" textAlign="left">
             {description}
           </Text>
-          {isOpen && subtasks && subtasks.length > 0 && (
+          {isOpen && isExpandable && (
             <FlatList
               style={{ marginTop: 8, marginLeft: 32 }}
               data={subtasks}
@@ -59,7 +61,7 @@ export const TaskCard: FC<TaskCardProps> = ({
           )}
         </View>
       </Content>
-      <DropDownMenu onDelete={onDelete} />
+      <DropDownMenu onDelete={onDelete} onEdit={onEdit} withEdit={!isDone} />
     </StyledTaskCard>
   );
 };

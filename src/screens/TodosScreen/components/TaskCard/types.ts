@@ -5,4 +5,6 @@ export type TaskCardProps = Task & {
   onDelete: () => void;
   onDone: (isDone: boolean) => void;
   onSubtaskDone: (subtaskId: string) => (isDone: boolean) => void;
+  onTaskPress: () => void;
+  onEdit: () => void;
 };

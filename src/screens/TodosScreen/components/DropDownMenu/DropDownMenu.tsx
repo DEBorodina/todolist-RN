@@ -7,15 +7,22 @@ import { Text } from '@components/atoms/Text';
 import { Dot, Item, Menu, Popup } from './styles';
 import { DropDownMenuProps } from './types';
 
-export const DropDownMenu: FC<DropDownMenuProps> = ({ onDelete }) => {
+export const DropDownMenu: FC<DropDownMenuProps> = ({
+  onDelete,
+  onEdit,
+  withEdit,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = useMemo(
-    () => [
-      { name: 'edit task', action: () => {} },
-      { name: 'delete task', action: onDelete },
-    ],
-    [onDelete],
+    () =>
+      withEdit
+        ? [
+            { name: 'edit task', action: onEdit },
+            { name: 'delete task', action: onDelete },
+          ]
+        : [{ name: 'delete task', action: onDelete }],
+    [onDelete, onEdit, withEdit],
   );
 
   return (

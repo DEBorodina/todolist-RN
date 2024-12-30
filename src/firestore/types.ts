@@ -19,6 +19,7 @@ export type Task = {
   categoryId: string;
   id: string;
   isDone: boolean;
+  isImportant: boolean;
 };
 export type BaseTask = Omit<Task, 'id' | 'subtasks'>;
 

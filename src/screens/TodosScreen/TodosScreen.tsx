@@ -8,7 +8,7 @@ import { Spinner } from '@components/atoms/Spinner';
 import { Text } from '@components/atoms/Text';
 import { MainLayout } from '@components/layouts/MainLayout';
 import { useModal } from '@components/molecules/Modal';
-import { Task, deleteTask, updateTask } from '@firestore';
+import { Task, deleteTask, updateFirestoreTask } from '@firestore';
 import {
   selectCategories,
   selectSetCategories,
@@ -17,6 +17,7 @@ import {
 } from '@store';
 
 import { AddTaskForm } from './components/AddTaskForm';
+import { DoneTasksBlock } from './components/DoneTasksBlock';
 import { TaskCard } from './components/TaskCard';
 import { TodosScreenProps } from './types';
 
@@ -26,6 +27,8 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [openedTaskId, setOpenedTaskId] = useState<string>();
+  const [displayedTasks, setDisplayedTasks] = useState<Task[]>([]);
+  const [isDoneTasks, setIsDoneTasks] = useState(false);
 
   const categories = useStore(selectCategories);
   const setCategories = useStore(selectSetCategories);
@@ -47,9 +50,11 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
       return task;
     });
 
-    updateTask(newTasks.find(({ id }) => id === taskId)!!);
+    updateFirestoreTask(newTasks.find(({ id }) => id === taskId)!!);
     setTasks(newTasks);
   };
+
+  const handleOpenTask = (taskId: string) => () => setOpenedTaskId(taskId);
 
   const handleDoneSubtask = (subtaskId: string) => (isDone: boolean) => {
     const newTasks = tasks.map(task => {
@@ -68,8 +73,23 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
       return task;
     });
 
-    updateTask(newTasks.find(({ id }) => id === openedTaskId)!!);
+    updateFirestoreTask(newTasks.find(({ id }) => id === openedTaskId)!!);
     setTasks(newTasks);
+  };
+
+  const handleEditTask = (task: Task) => () => {
+    setIsOpen(true);
+
+    const category = categories.find(({ id }) => id === task.categoryId)
+      ?.name!!;
+
+    setModalContent(
+      <AddTaskForm
+        setTasks={setTasks}
+        setOpenedTaskId={setOpenedTaskId}
+        defaultValues={{ category, ...task }}
+      />,
+    );
   };
 
   const handleDelete = useCallback(
@@ -88,6 +108,10 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
   );
 
   useEffect(() => {
+    setDisplayedTasks(tasks.filter(({ isDone }) => isDone === isDoneTasks));
+  }, [isDoneTasks, tasks]);
+
+  useEffect(() => {
     const getTasks = async () => {
       const newTasks = await getFirestoreTasks(userId);
       setOpenedTaskId(newTasks[0]?.id);
@@ -98,6 +122,8 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
 
     getTasks();
   }, [userId]);
+
+  const doneTasksAmount = tasks.filter(task => task.isDone).length;
 
   return (
     <MainLayout isFullLayout>
@@ -110,7 +136,7 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
           </Text>
           <View style={{ width: '100%', marginTop: 20, flex: 1 }}>
             <FlatList
-              data={tasks}
+              data={displayedTasks}
               renderItem={({ item }) => (
                 <TaskCard
                   {...item}
@@ -118,10 +144,18 @@ export const TodosScreen: FC<TodosScreenProps> = () => {
                   onDelete={handleDelete(item.id, item.categoryId)}
                   onDone={handleDone(item.id)}
                   onSubtaskDone={handleDoneSubtask}
+                  onTaskPress={handleOpenTask(item.id)}
+                  onEdit={handleEditTask(item)}
+                  key={item.id}
                 />
               )}
             />
           </View>
+          <DoneTasksBlock
+            tasksAmount={doneTasksAmount}
+            isOpen={isDoneTasks}
+            onPress={() => setIsDoneTasks(!isDoneTasks)}
+          />
           <Button size="circle-l" color="secondary" onClick={handleAdd}>
             <Icon name="plus-a" size={19} color="#fff" />
           </Button>
