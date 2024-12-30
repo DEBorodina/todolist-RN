@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { Styler } from '@common-types';
 
-export type Sizes = 'm' | 'circle';
+export type Sizes = 'm' | 'circle-l' | 'circle-m';
 export type Colors = 'primary' | 'secondary';
 
 export type StyledButtonProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { EventProvider } from 'react-native-outside-press';
 
 import { StatusBar } from '@components/atoms/StatusBar';
 import { ModalPortal, ModalProvider } from '@components/molecules/Modal';
@@ -8,14 +9,16 @@ import { Navigator } from './navigation/Navigator';
 
 function App(): React.JSX.Element {
   return (
-    <ModalProvider>
-      <GlobalThemeProvider>
-        <StatusBar>
-          <Navigator />
-        </StatusBar>
-        <ModalPortal />
-      </GlobalThemeProvider>
-    </ModalProvider>
+    <EventProvider>
+      <ModalProvider>
+        <GlobalThemeProvider>
+          <StatusBar>
+            <Navigator />
+          </StatusBar>
+          <ModalPortal />
+        </GlobalThemeProvider>
+      </ModalProvider>
+    </EventProvider>
   );
 }
 

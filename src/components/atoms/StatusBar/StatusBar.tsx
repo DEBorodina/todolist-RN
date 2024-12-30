@@ -11,11 +11,11 @@ export const StatusBar: FC<StatusBarProps> = ({ children }) => {
 
   useEffect(() => {
     SystemNavigationBar.setNavigationColor(
-      'transparent',
+      colors.primaryInverted,
       'light',
       'navigation',
     );
-  }, []);
+  }, [colors.primaryInverted]);
 
   return (
     <>

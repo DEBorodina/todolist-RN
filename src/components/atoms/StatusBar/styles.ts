@@ -7,4 +7,5 @@ export const StyledStatusBarIos = styled.SafeAreaView`
 
 export const StatusBarLayout = styled.SafeAreaView`
   flex: 1;
+  background-color: ${({ theme }) => theme.colors.primaryInverted};
 `;

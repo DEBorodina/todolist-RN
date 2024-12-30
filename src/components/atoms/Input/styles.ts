@@ -1,4 +1,3 @@
-import Icon from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components/native';
 
 import { FONT_SIZES, FONT_WEIGHTS } from '../Text/constants';
@@ -22,9 +21,12 @@ export const StyledInput = styled.TextInput<StyledInputProps>`
   font-size: ${FONT_SIZES.m.fontSize}px;
   color: ${({ theme }) => theme.colors.text.primary};
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
+  box-shadow: 1px 1px 4px
+    ${({ withShadow }) => (withShadow ? '#00000020' : '#00000000')};
+  elevation: 3;
 `;
 
-export const SearchIcon = styled(Icon)`
+export const SearchIcon = styled.TouchableOpacity`
   position: absolute;
   top: 15px;
   left: 10px;

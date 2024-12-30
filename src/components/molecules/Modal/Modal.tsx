@@ -10,11 +10,15 @@ export const Modal = ({ children }: ModalProps) => {
   const { setIsOpen } = useContext(ModalContext);
 
   const handlePress = () => {
+    /* istanbul ignore next */
     setIsOpen(prevState => !prevState);
   };
 
   return (
-    <StyledModalBackground onPress={handlePress} activeOpacity={1}>
+    <StyledModalBackground
+      onPress={handlePress}
+      activeOpacity={1}
+      testID="modal-background">
       <TouchableOpacity onPress={() => {}} activeOpacity={1}>
         <StyledModal entering={FadeInDown.duration(300)}>
           {children}

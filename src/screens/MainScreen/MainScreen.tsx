@@ -1,11 +1,19 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { FC, useEffect, useMemo, useState } from 'react';
 
+import { UseNavigation } from '@common-types';
 import { Input } from '@components/atoms/Input';
 import { Spinner } from '@components/atoms/Spinner';
 import { Text } from '@components/atoms/Text';
 import { MainLayout } from '@components/layouts/MainLayout';
-import { Category, getFirestoreCategories } from '@firestore';
-import { selectUserId, useStore } from '@store';
+import { getFirestoreCategories } from '@firestore';
+import { SCREENS } from '@navigation';
+import {
+  selectCategories,
+  selectSetCategories,
+  selectUserId,
+  useStore,
+} from '@store';
 
 import { CategoryCardsSection } from './components/CategoryCardsSection';
 import { formatDate, getTasksAmount } from './helpers';
@@ -13,7 +21,11 @@ import { Container, Header, TitleView } from './styles';
 import { MainScreenProps } from './types';
 
 export const MainScreen: FC<MainScreenProps> = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const categories = useStore(selectCategories);
+  const setCategories = useStore(selectSetCategories);
+  const navigation = useNavigation<UseNavigation>();
+  const [search, setSearch] = useState('');
+
   const [isLoading, setIsLoading] = useState(true);
   const userId = useStore(selectUserId);
 
@@ -33,7 +45,11 @@ export const MainScreen: FC<MainScreenProps> = () => {
     };
 
     getCategories();
-  }, [userId]);
+  }, [setCategories, userId]);
+
+  const handleSearch = () => {
+    navigation.navigate(SCREENS.TODOS_SCREEN, { filter: 'search', search });
+  };
 
   return (
     <MainLayout>
@@ -53,12 +69,17 @@ export const MainScreen: FC<MainScreenProps> = () => {
               <Text view="medium-s" styler={{ marginBottom: 16 }}>
                 {date}
               </Text>
-              <Input withSearchIcon size="l" />
+              <Input
+                withSearchIcon
+                size="l"
+                withShadow
+                value={search}
+                onChangeText={setSearch}
+                onIconClick={handleSearch}
+                placeholder="Search tasks"
+              />
             </Header>
-            <CategoryCardsSection
-              categories={categories || []}
-              setCategories={setCategories}
-            />
+            <CategoryCardsSection />
           </Container>
         </>
       )}

@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+export const StyledScrollView = styled.ScrollView`
+  width: 100%;
+`;
+
 export const StyledCategoryCardsSection = styled.View`
   width: 328px;
   flex-direction: row;

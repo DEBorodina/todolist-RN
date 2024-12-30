@@ -15,7 +15,7 @@ const meta = {
       control: { type: 'radio' },
     },
     size: {
-      options: ['m', 'circle'],
+      options: ['m', 'circle-l', 'circle-m'],
       control: { type: 'radio' },
     },
     isLoading: {

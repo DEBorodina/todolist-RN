@@ -4,7 +4,7 @@ import { FONT_SIZES, FONT_WEIGHTS } from './constants';
 
 export type FontWeights = keyof typeof FONT_WEIGHTS;
 export type FontSizes = keyof typeof FONT_SIZES;
-type FontColors = 'primary' | 'secondary' | 'primaryInverted';
+type FontColors = 'primary' | 'secondary' | 'primaryInverted' | 'gray';
 type TextAligns = 'left' | 'center' | 'right';
 
 export type FontPresetsNames = `${FontWeights}-${FontSizes}`;

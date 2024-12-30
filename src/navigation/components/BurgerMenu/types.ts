@@ -4,4 +4,5 @@ export type BurgerMenuProps = {
 
 export type Navigation = {
   toggleDrawer: () => void;
+  goBack: () => void;
 };

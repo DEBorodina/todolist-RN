@@ -5,7 +5,7 @@ import { StyledInputProps } from '../../atoms/Input/types';
 import { SIZES } from './constants';
 import { StyledDrpDownProps } from './types';
 
-export const Container = styled.View<Omit<StyledInputProps, 'withSearchIcon'>>`
+export const Container = styled.View<Pick<StyledInputProps, 'size'>>`
   z-index: 2;
   width: ${({ size }) => SIZES[size].width}px;
 `;

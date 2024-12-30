@@ -1,10 +1,13 @@
 import { RenderOptions, render } from '@testing-library/react-native';
 import React, { ReactElement } from 'react';
+import { ThemeProvider } from 'styled-components/native';
 
-import { GlobalThemeProvider } from '@theme';
+import { colors } from '@theme';
 
 const AllTheProviders = ({ children }: { children: JSX.Element }) => {
-  return <GlobalThemeProvider>{children}</GlobalThemeProvider>;
+  return (
+    <ThemeProvider theme={{ colors: colors.DARK }}>{children}</ThemeProvider>
+  );
 };
 
 const customRender = (ui: ReactElement, options?: RenderOptions) =>
