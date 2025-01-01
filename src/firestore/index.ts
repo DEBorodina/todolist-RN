@@ -5,3 +5,4 @@ export * from './constants';
 export * from './add-tasks';
 export * from './delete-task';
 export * from './update-task';
+export * from './get-tasks';

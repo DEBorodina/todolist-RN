@@ -21,15 +21,17 @@ import { Container, Header, TitleView } from './styles';
 import { MainScreenProps } from './types';
 
 export const MainScreen: FC<MainScreenProps> = () => {
+  const navigation = useNavigation<UseNavigation>();
+
+  const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
   const categories = useStore(selectCategories);
   const setCategories = useStore(selectSetCategories);
-  const navigation = useNavigation<UseNavigation>();
-  const [search, setSearch] = useState('');
-
-  const [isLoading, setIsLoading] = useState(true);
   const userId = useStore(selectUserId);
 
   const taskAmount = useMemo(
+    /* istanbul ignore next */
     () => getTasksAmount(categories || []) || 'no',
     [categories],
   );

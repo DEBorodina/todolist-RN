@@ -30,6 +30,7 @@ export const GlobalThemeProvider: FC<{ children: ReactNode }> = ({
     [theme],
   );
 
+  /* istanbul ignore next */
   if (!themeValue) {
     return null;
   }

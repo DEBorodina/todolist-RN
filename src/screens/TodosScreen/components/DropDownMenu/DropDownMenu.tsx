@@ -25,18 +25,20 @@ export const DropDownMenu: FC<DropDownMenuProps> = ({
     [onDelete, onEdit, withEdit],
   );
 
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Menu>
       {isOpen ? (
-        <OutsidePressHandler
-          onOutsidePress={() => {
-            setIsOpen(false);
-          }}>
+        <OutsidePressHandler onOutsidePress={handleClose}>
           <Popup>
             {menuItems.map(item => (
               <Item
                 onPress={() => {
-                  setIsOpen(false);
+                  handleClose();
                   item.action();
                 }}
                 key={item.name}>
@@ -46,7 +48,7 @@ export const DropDownMenu: FC<DropDownMenuProps> = ({
           </Popup>
         </OutsidePressHandler>
       ) : (
-        <TouchableOpacity onPress={() => setIsOpen(true)}>
+        <TouchableOpacity onPress={handleOpen} testID="dots">
           <Dot />
           <Dot />
           <Dot />

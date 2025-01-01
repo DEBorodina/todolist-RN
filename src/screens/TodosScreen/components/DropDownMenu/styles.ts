@@ -16,6 +16,7 @@ export const Popup = styled.View`
   z-index: 2;
   padding: 8px 8px 4px;
   box-shadow: 1px 1px 4px #00000040;
+  elevation: 3;
 `;
 
 export const Item = styled.TouchableOpacity`

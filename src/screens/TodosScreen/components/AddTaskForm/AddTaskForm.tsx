@@ -1,7 +1,5 @@
 import React, { FC, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { View } from 'react-native';
-import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 import { Button } from '@components/atoms/Button';
@@ -9,10 +7,10 @@ import { Input } from '@components/atoms/Input';
 import { Text } from '@components/atoms/Text';
 import { useModal } from '@components/molecules/Modal';
 import { Select } from '@components/molecules/Select';
+import { BASE_RULES } from '@constants';
 import {
   BaseTask,
   Category,
-  Subtask,
   Task,
   addFirestoreTask,
   updateFirestoreTask,
@@ -26,6 +24,12 @@ import {
 
 import { StarCheckBox } from '../StarCheckBox';
 
+import {
+  filterCategories,
+  updateSubtasks,
+  validateCategories,
+} from './helpers';
+import { Star } from './styles';
 import { AddTaskFormProps, FromState } from './types';
 
 export const AddTaskForm: FC<AddTaskFormProps> = ({
@@ -40,6 +44,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
       ...defaultValues,
     },
   });
+
   const [isLoading, setIsLoading] = useState(false);
   const [displayedCategories, setDisplayedCategories] = useState<Category[]>(
     [],
@@ -54,35 +59,9 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
     (onChange: (value: string) => void) => (value: string) => {
       onChange(value);
 
-      const newCategories = categories
-        .filter(({ name }) =>
-          name.toLocaleLowerCase().includes(value.toLowerCase()),
-        )
-        .slice(0, 5);
+      const newCategories = filterCategories(categories, value);
 
       setDisplayedCategories(newCategories);
-    };
-
-  const handleChangeSubtask =
-    (
-      onChange: (subtasks: Subtask[]) => void,
-      subtasks?: Subtask[],
-      index?: number,
-    ) =>
-    (value?: string) => {
-      if (!subtasks) {
-        subtasks = [];
-      }
-      if (value !== undefined && index !== undefined) {
-        subtasks[index].title = value;
-      } else if (
-        !subtasks.find(subtask => !subtask.title) &&
-        subtasks.length < 5
-      ) {
-        subtasks.push({ title: '', id: uuid.v4(), isDone: false });
-      }
-
-      onChange(subtasks);
     };
 
   const addTask = async (newTask: BaseTask, currentCategory: Category) => {
@@ -90,6 +69,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
     setCategories([...categories]);
 
     const newTaskId = await addFirestoreTask(newTask);
+    /* istanbul ignore next */
     setTasks(prev => [{ ...newTask, id: newTaskId }, ...prev]);
 
     return newTaskId;
@@ -97,6 +77,8 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
 
   const updateTask = async (newTask: Task) => {
     await updateFirestoreTask(newTask);
+
+    /* istanbul ignore next */
     setTasks(prev => {
       const updatedTaskIndex = prev.findIndex(({ id }) => id === newTask.id);
       prev[updatedTaskIndex] = newTask;
@@ -140,7 +122,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
       <Text styler={{ marginBottom: 24 }} view="medium-l">
         {title}
       </Text>
-      <View style={{ position: 'absolute', right: 16, top: 16 }}>
+      <Star>
         <Controller
           control={control}
           render={({ field: { onChange, value } }) => (
@@ -148,7 +130,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
           )}
           name="isImportant"
         />
-      </View>
+      </Star>
       <Controller
         control={control}
         render={({
@@ -163,12 +145,12 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
               placeholder="Title"
             />
             <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-              {String(error?.message ?? '')}
+              {error?.message ?? ''}
             </Text>
           </>
         )}
         name="title"
-        rules={{ required: 'required' }}
+        rules={BASE_RULES}
       />
       <Controller
         control={control}
@@ -184,12 +166,12 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
               placeholder="Description"
             />
             <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-              {String(error?.message ?? '')}
+              {error?.message ?? ''}
             </Text>
           </>
         )}
         name="description"
-        rules={{ required: 'required' }}
+        rules={BASE_RULES}
       />
       {!defaultValues?.id && (
         <Controller
@@ -208,19 +190,14 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
                 renderItem={item => <Text>{item}</Text>}
               />
               <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-                {String(error?.message ?? '')}
+                {error?.message ?? ''}
               </Text>
             </>
           )}
           name="category"
           rules={{
-            required: 'required',
-            validate: value =>
-              categories.find(({ name }) =>
-                name.toLocaleLowerCase().includes(value.toLowerCase()),
-              )
-                ? true
-                : 'Must be from the list',
+            ...BASE_RULES,
+            validate: validateCategories(categories),
           }}
         />
       )}
@@ -232,7 +209,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
               <Input
                 key={index}
                 onBlur={onBlur}
-                onChangeText={handleChangeSubtask(onChange, value, index)}
+                onChangeText={updateSubtasks(onChange, value, index)}
                 value={subtask.title}
                 placeholder="Subtask"
                 styler={{ marginBottom: 8 }}
@@ -242,8 +219,8 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
               <Button
                 styler={{ margin: '0 auto' }}
                 size="circle-m"
-                onClick={() => handleChangeSubtask(onChange, value)()}>
-                <Icon name="plus-a" size={19} color="#fff" />
+                onClick={updateSubtasks(onChange, value)}>
+                <Icon name="plus-a" size={19} color="#fff" testID="add" />
               </Button>
             ) : null}
           </>

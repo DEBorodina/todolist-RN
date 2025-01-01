@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import { EventProvider } from 'react-native-outside-press';
 

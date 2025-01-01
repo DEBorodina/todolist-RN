@@ -1,13 +1,13 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
-import { getFirestoreTasks } from 'src/firestore/get-tasks';
 
 import { Button } from '@components/atoms/Button';
 import { Spinner } from '@components/atoms/Spinner';
 import { Text } from '@components/atoms/Text';
 import { MainLayout } from '@components/layouts/MainLayout';
 import { useModal } from '@components/molecules/Modal';
+import { getFirestoreTasks } from '@firestore';
 import { Task, deleteTask, updateFirestoreTask } from '@firestore';
 import {
   selectCategories,
@@ -19,7 +19,13 @@ import {
 import { AddTaskForm } from './components/AddTaskForm';
 import { DoneTasksBlock } from './components/DoneTasksBlock';
 import { TaskCard } from './components/TaskCard';
-import { filterTasks, getTitle } from './helpers';
+import {
+  filterTasks,
+  getTitle,
+  updateSubtaskDoneStatus,
+  updateTaskDoneStatus,
+} from './helpers';
+import { TasksContainer } from './styles';
 import { TodosScreenProps } from './types';
 
 export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
@@ -32,7 +38,6 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
 
   const categories = useStore(selectCategories);
   const setCategories = useStore(selectSetCategories);
-
   const userId = useStore(selectUserId);
 
   const handleAdd = () => {
@@ -43,12 +48,7 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
   };
 
   const handleDone = (taskId: string) => (isDone: boolean) => {
-    const newTasks = tasks.map(task => {
-      if (task.id === taskId) {
-        return { ...task, isDone: isDone };
-      }
-      return task;
-    });
+    const newTasks = updateTaskDoneStatus(tasks, taskId, isDone);
 
     updateFirestoreTask(newTasks.find(({ id }) => id === taskId)!!);
     setTasks(newTasks);
@@ -57,21 +57,12 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
   const handleOpenTask = (taskId: string) => () => setOpenedTaskId(taskId);
 
   const handleDoneSubtask = (subtaskId: string) => (isDone: boolean) => {
-    const newTasks = tasks.map(task => {
-      if (task.id === openedTaskId) {
-        const subtasks = task.subtasks?.map(subtask => {
-          if (subtask.id === subtaskId) {
-            return { ...subtask, isDone: isDone };
-          }
-          return subtask;
-        });
-        if (subtasks?.every(subtask => subtask.isDone)) {
-          task.isDone = true;
-        }
-        return { ...task, subtasks };
-      }
-      return task;
-    });
+    const newTasks = updateSubtaskDoneStatus(
+      tasks,
+      openedTaskId,
+      subtaskId,
+      isDone,
+    );
 
     updateFirestoreTask(newTasks.find(({ id }) => id === openedTaskId)!!);
     setTasks(newTasks);
@@ -109,6 +100,7 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
 
   useEffect(() => {
     if (route.params.filter === 'done') {
+      setDisplayedTasks(tasks);
       return;
     }
     setDisplayedTasks(tasks.filter(({ isDone }) => isDone === isDoneTasks));
@@ -130,6 +122,7 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
   }, [route.params, userId]);
 
   const doneTasksAmount = tasks.filter(task => task.isDone).length;
+
   const title = getTitle(route.params, categories);
 
   return (
@@ -141,7 +134,7 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
           <Text view="medium-l" color="primaryInverted" styler={{ margin: 12 }}>
             {title}
           </Text>
-          <View style={{ width: '100%', marginTop: 20, flex: 1 }}>
+          <TasksContainer>
             <FlatList
               data={displayedTasks}
               renderItem={({ item }) => (
@@ -157,7 +150,7 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
                 />
               )}
             />
-          </View>
+          </TasksContainer>
           {route.params.filter !== 'done' && (
             <>
               <DoneTasksBlock
@@ -166,7 +159,7 @@ export const TodosScreen: FC<TodosScreenProps> = ({ route }) => {
                 onPress={() => setIsDoneTasks(!isDoneTasks)}
               />
               <Button size="circle-l" color="secondary" onClick={handleAdd}>
-                <Icon name="plus-a" size={19} color="#fff" />
+                <Icon name="plus-a" size={19} color="#fff" testID="add" />
               </Button>
             </>
           )}

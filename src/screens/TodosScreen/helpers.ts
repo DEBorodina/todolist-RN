@@ -48,3 +48,39 @@ export const getTitle = (
       return `Search results for "${filter.search}"`;
   }
 };
+
+export const updateTaskDoneStatus = (
+  tasks: Task[],
+  taskId: string,
+  isDone: boolean,
+) =>
+  tasks.map(task => {
+    if (task.id === taskId) {
+      return { ...task, isDone: isDone };
+    }
+    return task;
+  });
+
+export const updateSubtaskDoneStatus = (
+  tasks: Task[],
+  openedTaskId: string | undefined,
+  subtaskId: string,
+  isDone: boolean,
+) =>
+  tasks.map(task => {
+    if (task.id === openedTaskId) {
+      const subtasks = task.subtasks?.map(subtask => {
+        if (subtask.id === subtaskId) {
+          return { ...subtask, isDone: isDone };
+        }
+        return subtask;
+      });
+
+      if (subtasks?.every(subtask => subtask.isDone)) {
+        task.isDone = true;
+      }
+
+      return { ...task, subtasks };
+    }
+    return task;
+  });

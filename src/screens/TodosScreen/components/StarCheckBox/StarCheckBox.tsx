@@ -15,7 +15,7 @@ export const StarCheckBox: FC<StarCheckBoxProps> = ({
 
   return (
     <TouchableOpacity onPress={handlePress}>
-      <Image source={src} />
+      <Image source={src} testID="star" />
     </TouchableOpacity>
   );
 };
