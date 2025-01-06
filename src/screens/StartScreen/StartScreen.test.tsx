@@ -16,7 +16,7 @@ jest.mock('react-native-uuid', () => {
 const mockSetUserId = jest.fn();
 
 jest.mock('@react-native-firebase/firestore', () => () => ({
-  collection: () => ({ add: jest.fn() }),
+  collection: () => ({ add: jest.fn(() => ({ id: '1' })) }),
 }));
 
 jest.mock('@store', () => ({

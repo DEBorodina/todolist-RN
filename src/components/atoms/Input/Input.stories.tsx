@@ -17,6 +17,11 @@ const meta = {
       mapping: { true: true, false: false },
       control: { type: 'radio' },
     },
+    withShadow: {
+      option: ['true', 'false'],
+      mapping: { true: true, false: false },
+      control: { type: 'radio' },
+    },
     placeholder: { control: { type: 'text' } },
   },
 } as Meta<typeof Input>;

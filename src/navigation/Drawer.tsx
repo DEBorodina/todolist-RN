@@ -1,16 +1,28 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
+/* istanbul ignore file */
+import {
+  DrawerContentComponentProps,
+  createDrawerNavigator,
+} from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useCallback } from 'react';
+import { TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useTheme } from 'styled-components/native';
 
 import { Text } from '@components/atoms/Text';
 import { MainScreen, TodosScreen } from '@screens';
 
 import { BurgerMenu } from './components/BurgerMenu';
 import { Navigation } from './components/BurgerMenu/types';
+import { DrawerMenu } from './components/DrawerMenu';
+import { SCREENS } from './constants';
+import { RootDrawerParamList } from './types';
 
-const { Navigator, Screen } = createDrawerNavigator();
+const { Navigator, Screen } = createDrawerNavigator<RootDrawerParamList>();
 
 export const Drawer = () => {
+  const { colors } = useTheme();
+
   const renderBurgerMenu = useCallback(
     (navigation: Navigation) => <BurgerMenu navigation={navigation} />,
     [],
@@ -28,21 +40,44 @@ export const Drawer = () => {
     [],
   );
 
+  const renderDrawerContent = useCallback(
+    (props: DrawerContentComponentProps) => <DrawerMenu {...props} />,
+    [],
+  );
+
+  const renderArrowBack = useCallback(
+    (navigation: Navigation) => (
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Icon
+          name="arrow-back"
+          size={30}
+          style={{ margin: 8 }}
+          color={colors.primaryInverted}
+        />
+      </TouchableOpacity>
+    ),
+    [colors.primaryInverted],
+  );
+
   return (
     <NavigationContainer>
       <Navigator
+        drawerContent={renderDrawerContent}
         screenOptions={({ navigation }) => ({
           headerTransparent: true,
           headerTitle: '',
           headerLeft: () => renderBurgerMenu(navigation),
           headerRight: () => renderLogo(),
-          navigationBarColor: '#ee0022',
+          drawerStyle: { backgroundColor: colors.navbar },
         })}>
-        <Screen name="MainScreen" component={MainScreen} />
+        <Screen name={SCREENS.MAIN_SCREEN} component={MainScreen} />
         <Screen
-          name="TodosScreen"
+          name={SCREENS.TODOS_SCREEN}
           component={TodosScreen}
-          initialParams={{ initialRoute: true }}
+          options={({ navigation }) => ({
+            headerLeft: () => renderArrowBack(navigation),
+            headerRight: () => null,
+          })}
         />
       </Navigator>
     </NavigationContainer>

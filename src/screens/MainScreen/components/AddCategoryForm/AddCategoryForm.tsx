@@ -1,57 +1,61 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useTheme } from 'styled-components/native';
 
 import { Button } from '@components/atoms/Button';
 import { Input } from '@components/atoms/Input';
 import { Text } from '@components/atoms/Text';
 import { useModal } from '@components/molecules/Modal';
 import { Select } from '@components/molecules/Select';
-import { ICONS } from '@constants';
-import { addCategory } from '@firestore';
-import { selectUserId, useStore } from '@store';
+import { BASE_RULES } from '@constants';
+import { addFirestoreCategory } from '@firestore';
+import { selectAddCategory, selectUserId, useStore } from '@store';
 import { getRandomColor } from '@utils';
 
+import { filterIconsByName } from './helpers';
 import { Container } from './styles';
-import { AddCategoryFormProps, FromState } from './types';
+import { FromState } from './types';
 
-export const AddCategoryForm: FC<AddCategoryFormProps> = ({
-  setCategories,
-}) => {
+export const AddCategoryForm = () => {
   const { control, handleSubmit } = useForm<FromState>();
   const [isLoading, setIsLoading] = useState(false);
+  const [icons, setIcons] = useState<string[]>([]);
 
+  const {
+    colors: {
+      text: { primary },
+    },
+  } = useTheme();
+
+  const addCategory = useStore(selectAddCategory);
   const userId = useStore(selectUserId);
   const { setIsOpen } = useModal();
 
-  const [icons, setIcons] = useState<string[]>([]);
   const handleIconChange =
     (onChange: (value: string) => void) => (value: string) => {
       onChange(value);
 
-      const newIcons = ICONS.filter(icon =>
-        icon.includes(value.toLowerCase()),
-      ).slice(0, 3);
+      const newIcons = filterIconsByName(value);
       setIcons(newIcons);
     };
 
   const onSubmit = async (data: FromState) => {
     setIsLoading(true);
+
     const newCategory = {
       ...data,
       color: getRandomColor(),
       userId: userId ?? '',
       tasksAmount: 0,
     };
-    const newCategoryId = await addCategory(newCategory);
 
-    setCategories(prev => [
-      ...prev,
-      {
-        ...newCategory,
-        id: newCategoryId,
-      },
-    ]);
+    const newCategoryId = await addFirestoreCategory(newCategory);
+
+    addCategory({
+      ...newCategory,
+      id: newCategoryId,
+    });
 
     setIsOpen(false);
     setIsLoading(false);
@@ -76,12 +80,12 @@ export const AddCategoryForm: FC<AddCategoryFormProps> = ({
               placeholder="Category"
             />
             <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-              {String(error?.message ?? '')}
+              {error?.message ?? ''}
             </Text>
           </>
         )}
         name="name"
-        rules={{ required: 'required' }}
+        rules={BASE_RULES}
       />
       <Controller
         control={control}
@@ -100,17 +104,17 @@ export const AddCategoryForm: FC<AddCategoryFormProps> = ({
               renderItem={item => (
                 <>
                   <Text>{item}</Text>
-                  <Icon name={item} />
+                  <Icon name={item} color={primary} />
                 </>
               )}
             />
             <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-              {String(error?.message ?? '')}
+              {error?.message ?? ''}
             </Text>
           </>
         )}
         name="iconName"
-        rules={{ required: 'required' }}
+        rules={BASE_RULES}
       />
       <Button
         onClick={handleSubmit(onSubmit)}

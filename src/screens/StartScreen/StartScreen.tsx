@@ -6,7 +6,7 @@ import uuid from 'react-native-uuid';
 import { Button } from '@components/atoms/Button';
 import { Text } from '@components/atoms/Text';
 import { DEFAULT_CATEGORIES, USER_ID_KEY } from '@constants';
-import { addCategories } from '@firestore';
+import { addFirestoreCategories } from '@firestore';
 import { selectSetUserId, useStore } from '@store';
 import { setAsyncStorageItem } from '@utils';
 
@@ -25,7 +25,7 @@ export const StartScreen: FC<StartScreenProps> = () => {
     const userId = uuid.v4();
     await setAsyncStorageItem(userId, USER_ID_KEY);
 
-    await addCategories(
+    await addFirestoreCategories(
       DEFAULT_CATEGORIES.map(category => ({
         ...category,
         userId,
