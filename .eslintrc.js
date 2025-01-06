@@ -5,4 +5,5 @@ module.exports = {
     /** TODO: add custom rule to disable inline styles but allow styler */
     'react-native/no-inline-styles': 0,
   },
+  plugins: ['detox'],
 };

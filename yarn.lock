@@ -8798,6 +8798,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-detox@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "eslint-plugin-detox@npm:1.0.0"
+  dependencies:
+    requireindex: ~1.1.0
+  checksum: c8e4db24fcb87310b13d1500000bb717c5c0ac409258af67c7eb53b203062c265a63aedae78e71bb3739cd180d97dddd0ab43b6732fce5a19515d51137eee7a2
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-eslint-comments@npm:^3.2.0":
   version: 3.2.0
   resolution: "eslint-plugin-eslint-comments@npm:3.2.0"
@@ -13739,6 +13748,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"requireindex@npm:~1.1.0":
+  version: 1.1.0
+  resolution: "requireindex@npm:1.1.0"
+  checksum: 397057d97d7f753a3851abf0d6db94c295bd8254536f71f622b896ba08ea8c0d3e3771c8b009a557e6ce602f4245c0588836cdf59c4ce588fff721a7b855d323
+  languageName: node
+  linkType: hard
+
 "reselect@npm:^4.1.7":
   version: 4.1.8
   resolution: "reselect@npm:4.1.8"
@@ -14916,6 +14932,7 @@ __metadata:
     babel-plugin-module-resolver: ^5.0.2
     detox: ^20.31.0
     eslint: ^8.19.0
+    eslint-plugin-detox: ^1.0.0
     eslint-plugin-ft-flow: latest
     generate-react-cli: ^8.4.8
     jest: ^29.6.3
