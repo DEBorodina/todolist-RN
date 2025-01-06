@@ -1,7 +1,7 @@
 buildscript {
     ext {
         buildToolsVersion = "34.0.0"
-        minSdkVersion = 23
+        minSdkVersion = 24
         compileSdkVersion = 34
         targetSdkVersion = 34
         ndkVersion = "26.1.10909125"
@@ -18,8 +18,19 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
         classpath 'com.google.gms:google-services:4.4.2'
         classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // (3)
     }
 }
+
+allprojects {
+   repositories {
+    google()
+    maven { // (4)
+      url("$rootDir/../node_modules/detox/Detox-android")
+    }
+     maven { url 'https://www.jitpack.io' }
+   }
+ }
 
 
 apply plugin: "com.facebook.react.rootproject"
