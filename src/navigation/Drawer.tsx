@@ -49,6 +49,7 @@ export const Drawer = () => {
     (navigation: Navigation) => (
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Icon
+          testID="arrow-back"
           name="arrow-back"
           size={30}
           style={{ margin: 8 }}
