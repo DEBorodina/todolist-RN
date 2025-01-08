@@ -12,7 +12,8 @@
       "@screens": ["src/screens"],
       "@constants": ["src/constants"],
       "@store": ["src/store"],
-      "@firestore": ["src/firestore"]
+      "@firestore": ["src/firestore"],
+      "@navigation": ["src/navigation"]
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
   }

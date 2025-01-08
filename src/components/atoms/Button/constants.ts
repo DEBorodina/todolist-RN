@@ -1,4 +1,5 @@
-export const circleSize = 56;
+export const circleSizeL = 56;
+export const circleSizeM = 32;
 
 export const sizes = {
   m: {
@@ -6,10 +7,15 @@ export const sizes = {
     width: 240,
     borderRadius: '12px',
   },
-  circle: {
-    height: circleSize,
-    width: circleSize,
-    borderRadius: `${circleSize / 2}px`,
+  'circle-l': {
+    height: circleSizeL,
+    width: circleSizeL,
+    borderRadius: `${circleSizeL / 2}px`,
+  },
+  'circle-m': {
+    height: circleSizeM,
+    width: circleSizeM,
+    borderRadius: `${circleSizeM / 2}px`,
   },
 };
 

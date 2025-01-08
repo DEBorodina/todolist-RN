@@ -17,6 +17,7 @@ module.exports = {
           '@store': './src/store',
           '@constants': './src/constants',
           '@firestore': './src/firestore',
+          '@navigation': './src/navigation',
           'assets/*': './assets/*',
         },
       },

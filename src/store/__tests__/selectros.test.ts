@@ -1,41 +1,82 @@
-import { create } from 'zustand';
-
-import { selectSetUserId, selectUserId } from '../selectors';
+import {
+  selectAddCategory,
+  selectCategories,
+  selectSetCategories,
+  selectSetTheme,
+  selectSetUserId,
+  selectSwitchTheme,
+  selectTheme,
+  selectUserId,
+} from '../selectors';
 import { Store } from '../types';
 
-const createTestStore = () => {
-  return create<Store>(set => ({
-    setUserId: (id: string) => set({ userId: id }),
-  }));
+const mockStore: Store = {
+  userId: '123',
+  setUserId: jest.fn(),
+  categories: [
+    {
+      id: '1',
+      name: 'Work',
+      tasksAmount: 5,
+      color: '',
+      iconName: '',
+      userId: '',
+    },
+  ],
+  setCategories: jest.fn(),
+  addCategory: jest.fn(),
+  theme: 'LIGHT',
+  switchTheme: jest.fn(),
+  setTheme: jest.fn(),
 };
 
-describe('Selectors', () => {
-  let store: ReturnType<typeof createTestStore>;
-
-  beforeEach(() => {
-    store = createTestStore();
+describe('Zustand Selectors', () => {
+  it('selects userId correctly', () => {
+    const result = selectUserId(mockStore);
+    expect(result).toBe('123');
   });
 
-  describe('selectUserId', () => {
-    it('should select userId from state', () => {
-      store.setState({ userId: 'test-user-id' });
+  it('selects setUserId correctly', () => {
+    const result = selectSetUserId(mockStore);
+    expect(result).toBe(mockStore.setUserId);
+  });
 
-      const userId = selectUserId(store.getState());
-      expect(userId).toBe('test-user-id');
-    });
+  it('selects categories correctly', () => {
+    const result = selectCategories(mockStore);
+    expect(result).toEqual([
+      {
+        id: '1',
+        name: 'Work',
+        tasksAmount: 5,
+        color: '',
+        iconName: '',
+        userId: '',
+      },
+    ]);
+  });
 
-    it('should select setUserId function from state', () => {
-      const setUserId = selectSetUserId(store.getState());
-      expect(typeof setUserId).toBe('function');
-    });
+  it('selects setCategories correctly', () => {
+    const result = selectSetCategories(mockStore);
+    expect(result).toBe(mockStore.setCategories);
+  });
 
-    it('should update userId using setUserId', () => {
-      const setUserId = selectSetUserId(store.getState());
+  it('selects addCategory correctly', () => {
+    const result = selectAddCategory(mockStore);
+    expect(result).toBe(mockStore.addCategory);
+  });
 
-      setUserId('new-user-id');
+  it('selects theme correctly', () => {
+    const result = selectTheme(mockStore);
+    expect(result).toBe('LIGHT');
+  });
 
-      const userId = selectUserId(store.getState());
-      expect(userId).toBe('new-user-id');
-    });
+  it('selects switchTheme correctly', () => {
+    const result = selectSwitchTheme(mockStore);
+    expect(result).toBe(mockStore.switchTheme);
+  });
+
+  it('selects setTheme correctly', () => {
+    const result = selectSetTheme(mockStore);
+    expect(result).toBe(mockStore.setTheme);
   });
 });

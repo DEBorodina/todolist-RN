@@ -6,7 +6,7 @@ import { BurgerMenu } from './BurgerMenu';
 
 describe('BurgerMenu', () => {
   const mockToggleDrawer = jest.fn();
-  const navigation = { toggleDrawer: mockToggleDrawer };
+  const navigation = { toggleDrawer: mockToggleDrawer, goBack: jest.fn() };
 
   it('calls toggleDrawer when pressed', () => {
     const { getByTestId } = render(<BurgerMenu navigation={navigation} />);
