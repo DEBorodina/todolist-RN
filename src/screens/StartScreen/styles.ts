@@ -7,6 +7,7 @@ export const Container = styled.View`
 
 export const Layout = styled.View`
   width: 100%;
+  max-width: 600px;
   height: 80%;
   max-height: 550px;
   align-items: center;

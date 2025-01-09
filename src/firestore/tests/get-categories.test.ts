@@ -1,5 +1,5 @@
 import { getFirestoreCategories } from '../get-categories';
-import { getFirestoreData } from '../helpers';
+import { getFirestoreData } from '../get-data';
 
 jest.mock('../helpers');
 

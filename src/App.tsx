@@ -6,6 +6,8 @@ import { StatusBar } from '@components/atoms/StatusBar';
 import { ModalPortal, ModalProvider } from '@components/molecules/Modal';
 import { GlobalThemeProvider } from '@theme';
 
+import '../index.css';
+
 import { Navigator } from './navigation/Navigator';
 
 function App(): React.JSX.Element {

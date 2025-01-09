@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import { USER_ID_KEY } from '@constants';
-import { StartScreen } from '@screens';
 import { selectSetUserId, selectUserId, useStore } from '@store';
 import { getAsyncStorageItem } from '@utils';
+
+import { StartScreen } from '../screens/StartScreen/StartScreen';
 
 import { Drawer } from './Drawer';
 

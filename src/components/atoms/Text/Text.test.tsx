@@ -9,6 +9,6 @@ describe('Text', () => {
     render(<Text>Hello world</Text>);
 
     const textContent = screen.getByText('Hello world');
-    expect(textContent).toBeOnTheScreen();
+    expect(textContent).toBeTruthy();
   });
 });

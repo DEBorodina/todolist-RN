@@ -1,4 +1,5 @@
-import { byCategoryId, byUserId, getFirestoreData } from '../helpers';
+import { getFirestoreData } from '../get-data';
+import { byCategoryId, byUserId } from '../helpers';
 import { WhereProps } from '../types';
 
 const mockUserId = 'testUserId';

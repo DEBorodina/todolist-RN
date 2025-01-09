@@ -14,6 +14,6 @@ describe('StatusBar', () => {
       </StatusBar>,
     );
 
-    expect(screen.getByText('content')).toBeOnTheScreen();
+    expect(screen.getByText('content')).toBeTruthy();
   });
 });

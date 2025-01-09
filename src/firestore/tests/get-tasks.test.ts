@@ -1,5 +1,5 @@
+import { getFirestoreData } from '../get-data';
 import { getFirestoreTasks } from '../get-tasks';
-import { getFirestoreData } from '../helpers';
 
 jest.mock('../helpers');
 

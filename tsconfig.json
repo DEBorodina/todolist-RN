@@ -1,6 +1,7 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
+    "moduleSuffixes": [".web", ""],
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
@@ -13,8 +14,10 @@
       "@constants": ["src/constants"],
       "@store": ["src/store"],
       "@firestore": ["src/firestore"],
-      "@navigation": ["src/navigation"]
+      "@navigation": ["src/navigation"],
+      "assets/*":["assets/*"]
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
-  }
+  },
+  "include": ["src/**/*","./global.d.ts","./jest.setup.ts"]
 }
