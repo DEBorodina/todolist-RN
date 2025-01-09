@@ -19,7 +19,8 @@ export const StyledModal = styled(Animated.View)`
   elevation: 10;
 `;
 
-export const StyledBlurBackground = styledWeb.div`
+// blurType type for backward compatibility with native BlurView
+export const StyledBlurBackground = styledWeb.div<{ blurType: 'light' }>`
   position: absolute;
   top: 0;
   left: 0;

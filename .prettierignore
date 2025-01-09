@@ -3,4 +3,5 @@ coverage/
 android/
 ios/
 vendor/
+build/
 .yarn/
