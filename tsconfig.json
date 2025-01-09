@@ -15,9 +15,9 @@
       "@store": ["src/store"],
       "@firestore": ["src/firestore"],
       "@navigation": ["src/navigation"],
-      "assets/*":["assets/*"]
+      "assets/*": ["assets/*"]
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*","./global.d.ts","./jest.setup.ts"]
+  "include": ["src/**/*", "./global.d.ts", "./jest.setup.ts"]
 }
