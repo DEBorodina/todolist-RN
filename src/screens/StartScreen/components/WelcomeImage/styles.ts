@@ -7,6 +7,7 @@ export const Container = styled.View`
 
 export const BackgroundImage = styled.Image`
   width: 100%;
+  aspect-ratio: 1;
 `;
 
 export const WomanImage = styled(Animated.Image)`
@@ -14,6 +15,7 @@ export const WomanImage = styled(Animated.Image)`
   right: 0;
   bottom: 0;
   height: 90%;
+  aspect-ratio: 1/3;
 `;
 
 export const ListImage = styled(Animated.Image)`

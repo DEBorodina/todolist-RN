@@ -1,5 +1,6 @@
 import { CATEGORIES, TASKS } from './constants';
-import { byCategoryId, byUserId, getFirestoreData } from './helpers';
+import { getFirestoreData } from './get-data';
+import { byCategoryId, byUserId } from './helpers';
 import { Category } from './types';
 
 export const getFirestoreCategories = async (userId: string | undefined) => {

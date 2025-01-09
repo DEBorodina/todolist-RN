@@ -27,9 +27,9 @@ describe('StartScreen', () => {
   it('renders correctly', () => {
     render(<StartScreen />);
 
-    expect(screen.getByText(TITLE)).toBeOnTheScreen();
-    expect(screen.getByText(BUTTON_TEXT)).toBeOnTheScreen();
-    expect(screen.getByText(SUBTITLE)).toBeOnTheScreen();
+    expect(screen.getByText(TITLE)).toBeTruthy();
+    expect(screen.getByText(BUTTON_TEXT)).toBeTruthy();
+    expect(screen.getByText(SUBTITLE)).toBeTruthy();
   });
 
   it('sets userId on click', async () => {

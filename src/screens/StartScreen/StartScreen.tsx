@@ -6,9 +6,10 @@ import uuid from 'react-native-uuid';
 import { Button } from '@components/atoms/Button';
 import { Text } from '@components/atoms/Text';
 import { DEFAULT_CATEGORIES, USER_ID_KEY } from '@constants';
-import { addFirestoreCategories } from '@firestore';
 import { selectSetUserId, useStore } from '@store';
 import { setAsyncStorageItem } from '@utils';
+
+import { addFirestoreCategories } from '../../firestore/add-categories';
 
 import { WelcomeImage } from './components';
 import { ANIMATION_DURATION, BUTTON_TEXT, SUBTITLE, TITLE } from './config';

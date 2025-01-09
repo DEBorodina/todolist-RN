@@ -1,7 +1,7 @@
 import { getFirestoreCategories } from '../get-categories';
-import { getFirestoreData } from '../helpers';
+import { getFirestoreData } from '../get-data';
 
-jest.mock('../helpers');
+jest.mock('../get-data');
 
 jest.mock('@react-native-firebase/firestore', () => () => ({}));
 

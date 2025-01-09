@@ -1,12 +1,19 @@
+import fullLayout from 'assets/images/full-layout.png';
+import layout from 'assets/images/layout.png';
 import React, { FC } from 'react';
+import { Platform } from 'react-native';
 
 import { StyledBackground, StyledMainLayout } from './styles';
 import { MainLayoutProps } from './types';
 
 export const MainLayout: FC<MainLayoutProps> = ({ children, isFullLayout }) => {
-  const src = isFullLayout
-    ? require('assets/images/full-layout.png')
-    : require('assets/images/layout.png');
+  const isWeb = Platform.OS === 'web';
+  const layoutImage = isWeb ? layout : require('assets/images/layout.png');
+  const fullLayoutImage = isWeb
+    ? fullLayout
+    : require('assets/images/full-layout.png');
+
+  const src = isFullLayout ? fullLayoutImage : layoutImage;
 
   return (
     <StyledMainLayout>

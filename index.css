@@ -1,0 +1,64 @@
+@font-face {
+  src: url('./assets/fonts/Ionicons.ttf');
+  font-family: 'Ionicons';
+}
+
+@font-face {
+  src: url('./assets/fonts/FontAwesome.ttf');
+  font-family: 'FontAwesome';
+}
+
+@font-face {
+  src: url('./assets/fonts/FontAwesome5_Brands.ttf');
+  font-family: 'FontAwesome5_Brands';
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  src: url('./assets/fonts/FontAwesome5_Regular.ttf');
+  font-family: 'FontAwesome5_Regular';
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+@font-face {
+  src: url('./assets/fonts/FontAwesome5_Solid.ttf');
+  font-family: 'FontAwesome5_Solid';
+  font-weight: 900; /* Bold weight for solid */
+  font-style: normal;
+}
+
+@font-face {
+  src: url('./assets/fonts/MaterialIcons.ttf');
+  font-family: 'MaterialIcons';
+}
+
+@font-face {
+  src: url('./assets/fonts/Feather.ttf');
+  font-family: 'Feather';
+}
+
+@font-face {
+  src: url('./assets/fonts/MaterialCommunityIcons.ttf');
+  font-family: 'MaterialCommunityIcons';
+}
+
+@font-face {
+  font-family: 'Signika Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Signika_Medium'),
+    url('./assets/fonts/Signika_Medium.ttf') format('truetype');
+}
+
+html,
+body {
+  font-family: 'Signika Medium' !important;
+}
+
+body {
+  background-color: palegreen;
+}
+
+/* TODO: Add other icons fonts here */

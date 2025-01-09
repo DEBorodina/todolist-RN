@@ -1,5 +1,6 @@
 import { TASKS } from './constants';
-import { byUserId, getFirestoreData } from './helpers';
+import { getFirestoreData } from './get-data';
+import { byUserId } from './helpers';
 import { Task } from './types';
 
 export const getFirestoreTasks = async (userId: string | undefined) => {

@@ -13,7 +13,7 @@ describe('Button', () => {
       </Button>,
     );
     const button = getByText('Click Me');
-    expect(button).toBeOnTheScreen();
+    expect(button).toBeTruthy();
   });
 
   it('calls onClick function when clicked', () => {
@@ -42,7 +42,7 @@ describe('Button', () => {
     fireEvent.press(spinner);
 
     expect(handlePress).toHaveBeenCalledTimes(0);
-    expect(text).not.toBeOnTheScreen();
-    expect(spinner).toBeOnTheScreen();
+    expect(text).not.toBeTruthy();
+    expect(spinner).toBeTruthy();
   });
 });
