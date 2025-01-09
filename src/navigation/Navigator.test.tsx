@@ -10,13 +10,8 @@ jest.mock('@utils');
 jest.mock('@react-native-firebase/firestore', () => () => ({}));
 
 const mockDrawer = <Text>Drawer</Text>;
-const mockStartScreen = <Text>StartScreen</Text>;
 jest.mock('./Drawer', () => ({
   Drawer: () => mockDrawer, // Direct use of Text in the mock
-}));
-
-jest.mock('@screens', () => ({
-  StartScreen: () => mockStartScreen, // Direct use of Text in the mock
 }));
 
 describe('Navigator', () => {
@@ -35,7 +30,7 @@ describe('Navigator', () => {
     render(<Navigator />);
 
     await waitFor(() => {
-      expect(screen.getByText('StartScreen')).toBeTruthy();
+      expect(screen.getByText('Get started')).toBeTruthy();
     });
   });
 

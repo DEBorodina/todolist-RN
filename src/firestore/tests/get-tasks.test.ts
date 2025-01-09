@@ -1,7 +1,7 @@
 import { getFirestoreData } from '../get-data';
 import { getFirestoreTasks } from '../get-tasks';
 
-jest.mock('../helpers');
+jest.mock('../get-data');
 
 jest.mock('@react-native-firebase/firestore', () => () => ({}));
 

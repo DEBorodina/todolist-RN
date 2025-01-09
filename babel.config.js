@@ -22,9 +22,6 @@ module.exports = {
         },
       },
     ],
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-transform-modules-commonjs',
-    '@babel/plugin-proposal-export-namespace-from',
     'react-native-reanimated/plugin',
   ],
 };

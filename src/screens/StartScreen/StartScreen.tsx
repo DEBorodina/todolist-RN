@@ -9,7 +9,7 @@ import { DEFAULT_CATEGORIES, USER_ID_KEY } from '@constants';
 import { selectSetUserId, useStore } from '@store';
 import { setAsyncStorageItem } from '@utils';
 
-import { addFirestoreCategoriesWeb } from '../../firestore/add-categories';
+import { addFirestoreCategories } from '../../firestore/add-categories';
 
 import { WelcomeImage } from './components';
 import { ANIMATION_DURATION, BUTTON_TEXT, SUBTITLE, TITLE } from './config';
@@ -26,7 +26,7 @@ export const StartScreen: FC<StartScreenProps> = () => {
     const userId = uuid.v4();
     await setAsyncStorageItem(userId, USER_ID_KEY);
 
-    await addFirestoreCategoriesWeb(
+    await addFirestoreCategories(
       DEFAULT_CATEGORIES.map(category => ({
         ...category,
         userId,

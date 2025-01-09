@@ -1,6 +1,3 @@
-import '@testing-library/jest-dom';
-import '@testing-library/jest-dom/jest-globals';
-import '@testing-library/jest-native/extend-expect';
 import { configure } from '@testing-library/react-native';
 import '@testing-library/react-native/extend-expect';
 import 'react-native-gesture-handler/jestSetup';
