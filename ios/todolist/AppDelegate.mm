@@ -1,6 +1,5 @@
 #import "AppDelegate.h"
 #import <Firebase.h>
-#import "RNBootSplash.h" 
 
 #import <React/RCTBundleURLProvider.h>
 
@@ -31,10 +30,5 @@
 #endif
 }
 
-// ⬇️ Add this before file @end (for react-native 0.74+)
-- (void)customizeRootView:(RCTRootView *)rootView {
-  [super customizeRootView:rootView];
-  [RNBootSplash initWithStoryboard:@"BootSplash" rootView:rootView]; // ⬅️ initialize the splash screen
-}
 
 @end
