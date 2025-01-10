@@ -6,6 +6,7 @@ export type InputProps = Partial<StyledInputProps> & {
   onBlur?: () => void;
   onIconClick?: () => void;
   value?: string;
+  name?: string;
 };
 
 export type StyledInputProps = {

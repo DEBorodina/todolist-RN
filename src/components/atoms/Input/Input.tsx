@@ -1,4 +1,9 @@
 import React, { FC } from 'react';
+import {
+  NativeSyntheticEvent,
+  Platform,
+  TextInputChangeEventData,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components/native';
 
@@ -22,6 +27,16 @@ export const Input: FC<InputProps> = ({
     },
   } = useTheme();
 
+  const handleInputChange = (
+    data: NativeSyntheticEvent<TextInputChangeEventData>,
+  ) => {
+    if (Platform.OS === 'web') {
+      inputProps?.onChangeText?.(
+        (data?.target as unknown as { value: string }).value,
+      );
+    }
+  };
+
   return (
     <Container>
       {withSearchIcon && (
@@ -40,6 +55,8 @@ export const Input: FC<InputProps> = ({
         size={size}
         withShadow={withShadow}
         placeholderTextColor={gray}
+        // @ts-ignore: No overload matches this call.
+        onChange={handleInputChange}
         {...inputProps}
       />
     </Container>

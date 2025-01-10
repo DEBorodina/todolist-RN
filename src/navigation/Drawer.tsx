@@ -5,7 +5,8 @@ import {
 } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
+import 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components/native';
 
@@ -16,11 +17,12 @@ import { BurgerMenu } from './components/BurgerMenu';
 import { Navigation } from './components/BurgerMenu/types';
 import { DrawerMenu } from './components/DrawerMenu';
 import { SCREENS } from './constants';
+import { WebWrapper } from './styles';
 import { RootDrawerParamList } from './types';
 
 const { Navigator, Screen } = createDrawerNavigator<RootDrawerParamList>();
 
-export const Drawer = () => {
+const BaseDrawer = () => {
   const { colors } = useTheme();
 
   const renderBurgerMenu = useCallback(
@@ -84,3 +86,11 @@ export const Drawer = () => {
     </NavigationContainer>
   );
 };
+
+const WebDrawer = () => (
+  <WebWrapper>
+    <BaseDrawer />
+  </WebWrapper>
+);
+
+export const Drawer = Platform.OS === 'web' ? WebDrawer : BaseDrawer;

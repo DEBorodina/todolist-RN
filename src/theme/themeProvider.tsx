@@ -1,4 +1,5 @@
 import React, { FC, ReactNode, useEffect, useMemo } from 'react';
+import { ThemeProvider as ThemeProviderWeb } from 'styled-components';
 import { ThemeProvider } from 'styled-components/native';
 
 import { THEME } from '@constants';
@@ -35,5 +36,9 @@ export const GlobalThemeProvider: FC<{ children: ReactNode }> = ({
     return null;
   }
 
-  return <ThemeProvider theme={themeValue}>{children}</ThemeProvider>;
+  return (
+    <ThemeProviderWeb theme={themeValue}>
+      <ThemeProvider theme={themeValue}>{children}</ThemeProvider>
+    </ThemeProviderWeb>
+  );
 };

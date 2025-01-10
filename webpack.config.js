@@ -35,7 +35,7 @@ const babelLoaderConfiguration = {
 
 // Image loader configuration
 const imageLoaderConfiguration = {
-  test: /\.(gif|jpe?g|png|svg|ttf)$/,
+  test: /\.(gif|jpe?g|png|svg)$/,
   use: {
     loader: 'url-loader',
     options: {
@@ -45,9 +45,17 @@ const imageLoaderConfiguration = {
   },
 };
 
+const ttfLoaderConfiguration = {
+  test: /\.ttf$/,
+  loader: 'url-loader', // or directly file-loader
+  include: [
+    path.resolve(appDirectory, 'node_modules/react-native-vector-icons'),
+  ],
+};
+
 // File loader configuration
 const fileLoaderConfiguration = {
-  test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+  test: /\.(woff(2)?|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
   use: [
     {
       loader: 'file-loader',
@@ -85,6 +93,7 @@ module.exports = argv => {
     },
     module: {
       rules: [
+        ttfLoaderConfiguration,
         babelLoaderConfiguration,
         imageLoaderConfiguration,
         fileLoaderConfiguration,
@@ -93,7 +102,7 @@ module.exports = argv => {
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.(woff|woff2|eot|ttf|otf|css)$/i,
+          test: /\.(woff|woff2|eot|otf|css)$/i,
           type: 'asset/resource',
         },
       ],

@@ -1,6 +1,8 @@
+import { Platform } from 'react-native';
+
 import { FontPresets, FontPresetsNames, FontSizes, FontWeights } from './types';
 
-const FONT_FAMILY = 'Signika';
+export const FONT_FAMILY = 'Signika';
 
 export const FONT_WEIGHTS = {
   light: { fontFamily: `${FONT_FAMILY} Light`, fontWeight: 300 },
@@ -17,6 +19,8 @@ export const FONT_SIZES = {
   xl: { fontSize: 24 },
 } as const;
 
+const isWeb = Platform.OS === 'web';
+
 export const fontWeightNames = Object.keys(FONT_WEIGHTS) as FontWeights[];
 export const fontSizeNames = Object.keys(FONT_SIZES) as FontSizes[];
 
@@ -27,6 +31,7 @@ export const fontPresets = fontSizeNames.reduce((account, sizeKey) => {
     account[combinedKey] = {
       ...FONT_WEIGHTS[weightKey],
       ...FONT_SIZES[sizeKey],
+      fontFamily: isWeb ? FONT_FAMILY : FONT_WEIGHTS[weightKey].fontFamily,
     };
 
     return account;
