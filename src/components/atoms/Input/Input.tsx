@@ -55,6 +55,7 @@ export const Input: FC<InputProps> = ({
         size={size}
         withShadow={withShadow}
         placeholderTextColor={gray}
+        // @ts-ignore: No overload matches this call.
         onChange={handleInputChange}
         {...inputProps}
       />
