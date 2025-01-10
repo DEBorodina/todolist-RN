@@ -145,7 +145,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
               placeholder="Title"
             />
             <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-              {error?.message ?? ''}
+              {error?.message ?? ' '}
             </Text>
           </>
         )}
@@ -166,7 +166,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
               placeholder="Description"
             />
             <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-              {error?.message ?? ''}
+              {error?.message ?? ' '}
             </Text>
           </>
         )}
@@ -190,7 +190,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({
                 renderItem={item => <Text>{item}</Text>}
               />
               <Text view="light-s" textAlign="left" styler={{ marginLeft: 8 }}>
-                {error?.message ?? ''}
+                {error?.message ?? ' '}
               </Text>
             </>
           )}

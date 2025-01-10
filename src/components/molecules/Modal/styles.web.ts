@@ -24,6 +24,7 @@ export const StyledBlurBackground = styledWeb.div<{
   blurType: 'light';
   blurAmount: number;
 }>`
+  background: rgba(255, 255, 255, 0.4);
   position: absolute;
   top: 0;
   left: 0;

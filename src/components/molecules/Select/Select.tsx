@@ -18,17 +18,12 @@ export const Select: FC<SelectProps> = ({
 
   const handleBlur = () => {
     onBlur?.();
-    setIsOpen(false);
+    setTimeout(() => setIsOpen(false), 500);
   };
 
   const handleChangeText = (newValue: string) => {
     onChangeText?.(newValue);
     setIsOpen(true);
-  };
-
-  const handleSelect = (newValue: string) => () => {
-    onChangeText?.(newValue);
-    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -49,7 +44,12 @@ export const Select: FC<SelectProps> = ({
       {isOpen && items.length > 0 && (
         <DropDown itemsCount={items.length}>
           {items.map(item => (
-            <Item onPress={handleSelect(item)} key={item}>
+            <Item
+              onPress={() => {
+                onChangeText?.(item);
+                setIsOpen(false);
+              }}
+              key={item}>
               {renderItem(item)}
             </Item>
           ))}

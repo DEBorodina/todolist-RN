@@ -16,7 +16,7 @@ export const DropDown = styled.View<StyledDrpDownProps>`
   left: 0;
   width: 100%;
   height: ${({ itemsCount }) => itemsCount * 32 + 16}px;
-  z-index: 100;
+  z-index: 1000;
   background: ${({ theme }) => theme.colors.primaryInverted};
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
   border-radius: 12px;
