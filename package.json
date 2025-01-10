@@ -36,6 +36,7 @@
     "react-dom": "18.3.1",
     "react-hook-form": "^7.54.2",
     "react-native": "^0.75.3",
+    "react-native-bootsplash": "^6.3.2",
     "react-native-cli": "^2.0.1",
     "react-native-gesture-handler": "2.15.0",
     "react-native-outside-press": "^1.2.2",

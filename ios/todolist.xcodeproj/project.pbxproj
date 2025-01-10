@@ -16,6 +16,7 @@
 		248066B1716F4092BEEE9FDF /* Signika Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 345107DA6803482493EDE125 /* Signika Regular.ttf */; };
 		31C7839986D94F1290D0B1BD /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 895955E6B55C46DCB5C6C7BD /* MaterialCommunityIcons.ttf */; };
 		322FF1F0B9C4443B84D020DE /* Signika Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92385C7AB85C455897609DFB /* Signika Medium.ttf */; };
+		32F637E2A04746BAB6C61B3B /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 534A9625EFD644CA892F3D81 /* BootSplash.storyboard */; };
 		540B5F9B8CE44A01B4A005C0 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE3DA12940B8484284C0EF5F /* Zocial.ttf */; };
 		5D917C0B062249DAB4E46931 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAE1C86633457A9434CBEA /* FontAwesome5_Solid.ttf */; };
 		5E364456CB65D8633AAC9061 /* Pods_todolist_todolistTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C223F9E887B113DA3F5A6B /* Pods_todolist_todolistTests.framework */; };
@@ -27,6 +28,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		82B382E7A77D4B9198CC0B89 /* Signika Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 482E9DDA636A4583B71DDA52 /* Signika Light.ttf */; };
 		8BD3704F2D1B0B940008164E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BD3704E2D1B0B940008164E /* GoogleService-Info.plist */; };
+		92D18C7E1B824398A41EA1F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 767FF8605E74401D914B30E9 /* Colors.xcassets */; };
 		95DAD4E836F1445A98BA388A /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EC4C362F850423B8F2C7170 /* Octicons.ttf */; };
 		992F69C984654C2382851B67 /* Signika SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C6D0FDD9A54F13A2D3FF0F /* Signika SemiBold.ttf */; };
 		A1ACDB624064ECF8FCC3BD45 /* Pods_todolist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAB162579BFAA55170F8713 /* Pods_todolist.framework */; };
@@ -74,11 +76,13 @@
 		3F29DFFF6BF6479EBAFCCE83 /* Signika Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Signika Bold.ttf"; path = "../assets/fonts/Signika Bold.ttf"; sourceTree = "<group>"; };
 		482E9DDA636A4583B71DDA52 /* Signika Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Signika Light.ttf"; path = "../assets/fonts/Signika Light.ttf"; sourceTree = "<group>"; };
 		4915D9C2258079CB600C2E87 /* Pods-todolist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todolist.debug.xcconfig"; path = "Target Support Files/Pods-todolist/Pods-todolist.debug.xcconfig"; sourceTree = "<group>"; };
+		534A9625EFD644CA892F3D81 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = todolist/BootSplash.storyboard; sourceTree = "<group>"; };
 		5C11DFFBD7314F1BB149A7D8 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = ../assets/fonts/MaterialIcons.ttf; sourceTree = "<group>"; };
 		6B213A5ED1C448F9A2E925F9 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome6_Brands.ttf; path = ../assets/fonts/FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		6F09239A362B43C989ECF452 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = ../assets/fonts/SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		72B636C9F3704F4399BA541A /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = ../assets/fonts/AntDesign.ttf; sourceTree = "<group>"; };
 		762157E5D41C4FBBA67B9E4D /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = ../assets/fonts/FontAwesome.ttf; sourceTree = "<group>"; };
+		767FF8605E74401D914B30E9 /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = todolist/Colors.xcassets; sourceTree = "<group>"; };
 		7A1E14A441CF4E02A260685C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = ../assets/fonts/FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
 		7D1F3BCCD9B24A558A9890BE /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = ../assets/fonts/Ionicons.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = todolist/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				BA5D56257DA3B41702B18E81 /* PrivacyInfo.xcprivacy */,
+				534A9625EFD644CA892F3D81 /* BootSplash.storyboard */,
+				767FF8605E74401D914B30E9 /* Colors.xcassets */,
 			);
 			name = todolist;
 			sourceTree = "<group>";
@@ -358,6 +364,8 @@
 				322FF1F0B9C4443B84D020DE /* Signika Medium.ttf in Resources */,
 				248066B1716F4092BEEE9FDF /* Signika Regular.ttf in Resources */,
 				992F69C984654C2382851B67 /* Signika SemiBold.ttf in Resources */,
+				32F637E2A04746BAB6C61B3B /* BootSplash.storyboard in Resources */,
+				92D18C7E1B824398A41EA1F8 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
